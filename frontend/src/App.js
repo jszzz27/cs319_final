@@ -16,17 +16,14 @@ function App() {
 
   const [menu, setMenu] = useState(2);
 
-  const [addNewProduct, setAddNewProduct] = useState({
-    _id: 0,
-    title: "",
-    price: 0.0,
-    description: "",
-    category: "",
-    image: "http://127.0.0.1:4000/images/",
-    rating: { rate: 0.0, count: 0 },
+  const [addNewReview, setAddNewReview] = useState({
+    username: "",
+    productName: "",
+    comment: "",
+    rating: 0.0,
   });
 
-  const [addNewPrice, setAddNewPrice] = useState(0);
+  const [addNewRating, setAddNewRating] = useState(0);
 
   useEffect(() => {
     getAllBeerProducts();
@@ -100,30 +97,19 @@ function App() {
 
   function handleChange(evt) {
     const value = evt.target.value;
-    if (evt.target.name === "_id") {
-      setAddNewProduct({ ...addNewProduct, _id: value });
-    } else if (evt.target.name === "title") {
-      setAddNewProduct({ ...addNewProduct, title: value });
-    } else if (evt.target.name === "price") {
-      setAddNewProduct({ ...addNewProduct, price: value });
-    } else if (evt.target.name === "description") {
-      setAddNewProduct({ ...addNewProduct, description: value });
-    } else if (evt.target.name === "category") {
-      setAddNewProduct({ ...addNewProduct, category: value });
-    } else if (evt.target.name === "image") {
-      const temp = value;
-      setAddNewProduct({ ...addNewProduct, image: temp });
-    } else if (evt.target.name === "rate") {
+    if (evt.target.name === "username") {
+      setAddNewRating({ ...addNewRating, username: value });
+    } else if (evt.target.name === "productName") {
+      setAddNewRating({ ...addNewRating, productName: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewRating({ ...addNewRating, comment: value });
+    } else if (evt.target.name === "rating") {
       console.log(value);
-      setAddNewProduct({ ...addNewProduct, rating: { rate: value } });
-    } else if (evt.target.name === "count") {
-      const temp = addNewProduct.rating.rate;
-      setAddNewProduct({ ...addNewProduct, rating: { rate: temp, count: value } });
-    }
+      setAddNewRating({ ...addNewRating, rating: value });
   }
 
   function handleUpdateChange(evt) {
-    setAddNewPrice(evt.target.value);
+    setAddNewRating(evt.target.value);
   }
 
   function handleOnSubmit(e) {
@@ -132,11 +118,11 @@ function App() {
     fetch("http://localhost:4000/insert", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addNewProduct),
+      body: JSON.stringify(addNewRating),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Post a new product completed");
+        console.log("Post a new rating completed");
         console.log(data);
         if (data) {
           const value = Object.values(data);
@@ -305,5 +291,6 @@ function App() {
       </div>
     </div>
   );
+}
 } // App end
 export default App

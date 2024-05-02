@@ -91,6 +91,13 @@ app.get("/soda/:sodaID", async (req, resp) => {
     resp.send(oneProduct);
 });
 
+app.get("/review", async (req, resp) => {
+    const query = {};
+    const allProducts = await Review.find(query);
+    console.log(allProducts);
+    resp.send(allProducts);
+});
+
 app.get("/:productName", async (req, resp) => {
     const productName = req.params.productName;
     const query = { productName: productName};
@@ -124,6 +131,8 @@ app.post("/insert", async (req, res) => {
     }
 });
 
+//-----------------------------------------------------------
+
 app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);
     try {
@@ -137,6 +146,8 @@ app.delete("/delete", async (req, res) => {
         console.log("Error while deleting :" + p_id + " " + err);
     }
 });
+
+//-----------------------------------------------------------
 
 app.put("/update", async (req, res) => {
     console.log("Update :", req.body._id);

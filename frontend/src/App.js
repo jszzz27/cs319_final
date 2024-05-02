@@ -305,28 +305,39 @@ function App() {
 
         {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
-          { getAllBeerProducts() }
+          <script type="text/javascript">
+            {getAllBeerProducts()}
+          </script>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
         {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>
-          { getAllWaterProducts() }
+          <script type="text/javascript">
+            {getAllWaterProducts()}
+          </script>
+          {/* { getAllWaterProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
         {menu === 4 && <div>
           <h1 className='text-center text-danger'>Soda</h1>
-          { getAllSodaProducts() }
+          <script type="text/javascript">
+            {getAllSodaProducts()}
+          </script>
+          {/* { getAllSodaProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
         {menu === 5 && <div>
           <h1 className='text-center text-danger'>Juice</h1>
-          { getAllJuiceProducts() }
+          <script type="text/javascript">
+            {getAllJuiceProducts()}
+          </script>
+          {/* { getAllJuiceProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}

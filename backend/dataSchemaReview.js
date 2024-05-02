@@ -5,7 +5,7 @@ const ReactFormDataSchemaReview = new mongoose.Schema({
     username: { type: String },
     productName: { type: String },
     comment: { type: String },
-    rating: {type: String }
+    rating: {type: Number }
 },
 { collection: "review" });
 

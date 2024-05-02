@@ -305,7 +305,7 @@ function App() {
 
         {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
-          {/* <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllBeerProducts()}>Show All</button></div> */}
+          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllBeerProducts()}>Show All</button></div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}

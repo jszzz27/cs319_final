@@ -1,5 +1,4 @@
-{
-    "sodas": [
+[
         {
             "sodaId": "1",
             "itemLink": "./soda_item1.html",
@@ -64,8 +63,4 @@
             "description": "7 Up, a popular lemon-lime flavored soda, is celebrated for its crisp and refreshing taste. Crafted from carbonated water, high-fructose corn syrup, citric acid, natural flavors, and potassium citrate, 7 Up offers a tangy yet sweet flavor profile that appeals to consumers of all ages. Its clear appearance and effervescent bubbles make it visually enticing, while its light and zesty taste make it a favorite thirst-quenching beverage. 7 Up's iconic green packaging and the distinctive red dot logo are instantly recognizable worldwide. Whether enjoyed on its own or mixed with other beverages, 7 Up continues to be a go-to option for those seeking a refreshing and uplifting soft drink.",
             "macro_img": "./../../images/soda/up7Mac.jpg"
           }
-    ]
-  }
-  
-  
-        
+]

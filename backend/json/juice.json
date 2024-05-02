@@ -1,5 +1,4 @@
-{
-    "juices": [
+[
         {
             "juiceId": "1",
             "itemLink": "./juice_item1.html",
@@ -64,8 +63,4 @@
             "description": "Pineapple juice, a tropical and refreshing beverage, is celebrated for its sweet and tangy flavor profile. Made from ripe pineapples, this juice offers a burst of tropical goodness with every sip. Its vibrant yellow color and tropical aro./../../images of sunny beaches and exotic destinations. Pineapple juice is not only delicious but also packed with essential vitamins, minerals, and antioxidants, making it a nutritious choice for hydration. Whether enjoyed on its own, mixed into cocktails, or used as a base for smoothies and mocktails, pineapple juice remains a popular choice for its delightful taste and versatility.",
             "macro_img": "./../../images/juice/pjMac.jpg"
           }
-    ]
-  }
-  
-  
-        
+]

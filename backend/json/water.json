@@ -1,5 +1,4 @@
-{
-    "waters": [
+[
         {
             "waterId": "1",
             "itemLink": "./water_item1.html",
@@ -64,8 +63,4 @@
             "description": "Voss is a premium brand of bottled water originating from Norway, known for its exceptional purity and distinctive cylindrical glass bottles. Sourced from an artesian aquifer deep beneath the surface, Voss water is naturally filtered through layers of sand and rock, resulting in a crisp and clean taste. The water is untouched by human hands until it is bottled at the source, preserving its pristine quality. Voss offers still and sparkling varieties, catering to different preferences for hydration. Its sleek and elegant packaging, featuring minimalist design and a signature cylindrical bottle, adds to its appeal as a premium beverage option. Whether enjoyed at upscale events, fine dining establishments, or for everyday hydration, Voss water embodies luxury and sophistication, making it a favored choice among discerning consumers.",
             "macro_img": "./../../images/water/vossMac.jpg"
           }
-    ]
-  }
-  
-  
-        
+]

@@ -1,5 +1,4 @@
-{
-    "beers": [
+[
         {
             "beerId": "1",
             "itemLink": "./beer_item1.html",
@@ -64,8 +63,4 @@
           "description": "Guinness, an iconic Irish stout brewed by the Guinness Brewery, is renowned for its rich flavor, creamy texture, and distinctive dark color. Crafted with roasted barley, hops, water, and yeast, Guinness offers a complex flavor profile featuring notes of coffee, chocolate, and a subtle bitterness. Its velvety smoothness and thick, creamy head set it apart from other beers, creating a luxurious drinking experience. Whether enjoyed on its own or in classic cocktails like the Guinness and Black, this stout is a symbol of Irish heritage and craftsmanship. With its centuries-old brewing tradition and iconic branding, Guinness remains a beloved choice for those seeking a full-bodied and satisfying beer.",
           "macro_img": "./../../images/beer/guinMac.jpg"
         }
-    ]
-  }
-  
-  
-        
+]

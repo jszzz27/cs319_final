@@ -104,28 +104,23 @@ app.get("/:productName", async (req, resp) => {
 app.post("/insert", async (req, res) => {
     console.log(req.body);
     const p_id = req.body._id;
-    const ptitle = req.body.title;
-    const pprice = req.body.price;
-    const pdescription = req.body.description;
-    const pcategory = req.body.category;
-    const pimage = req.body.image;
-    const prate = req.body.rating.rate;
-    const pcount = req.body.rating.count;
-    const formData = new Product({
+    const pusername = req.body.pusername;
+    const pproduceName = req.body.productName;
+    const pcomment = req.body.comment;
+    const prating = req.body.rating;
+    const formData = new Review({
         _id: p_id,
-        title: ptitle,
-        price: pprice,
-        description: pdescription,
-        category: pcategory,
-        image: pimage,
-        rating: { rate: prate, count: pcount },
+        username: pusername,
+        produceName: pproduceName,
+        comment: pcomment,
+        rating: prating
     });
     try {
-        await Product.create(formData);
-        const messageResponse = { message: `Product ${p_id} Added!` };
+        await Review.create(formData);
+        const messageResponse = { message: `Review ${p_id} Added!` };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
-        console.log("Error while adding a new product:" + err);
+        console.log("Error while adding a new Review:" + err);
     }
 });
 
@@ -133,9 +128,9 @@ app.delete("/delete", async (req, res) => {
     console.log("Delete :", req.body);
     try {
         const query = { _id: req.body._id };
-        await Product.deleteOne(query);
+        await Review.deleteOne(query);
         const messageResponse = {
-            message: `Product ${req.body._id} Deleted!`,
+            message: `Review ${req.body._id} Deleted!`,
         };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
@@ -145,14 +140,14 @@ app.delete("/delete", async (req, res) => {
 
 app.put("/update", async (req, res) => {
     console.log("Update :", req.body._id);
-    console.log("New Price :", req.body.price);
+    console.log("New Rating :", req.body.rating);
 
     try{
         const filter = { _id: `${req.body._id}` };
-        const updateDoc = { $set: { price: `${req.body.price}`} };
-        await Product.updateOne(filter, updateDoc, null);
+        const updateDoc = { $set: { rating: `${req.body.rating}`} };
+        await Review.updateOne(filter, updateDoc, null);
         const messageResponse = {
-            message: `Product ${req.body_id} Updated!`
+            message: `Review ${req.body_id} Updated!`
         };
     } catch (err) {
         console.log("Error while updating :" + p_id + " " + err);

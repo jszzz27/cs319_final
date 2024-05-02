@@ -31,32 +31,40 @@ app.listen(port, () => {
 
 //-----------------------------------------------------------
 
-app.get("/", async (req, resp) => {
+app.get("/water", async (req, resp) => {
     const query = {};
     const allProducts = await Water.find(query);
     console.log(allProducts);
     resp.send(allProducts);
 });
 
-app.get("/", async (req, resp) => {
+app.get("/beer", async (req, resp) => {
     const query = {};
     const allProducts = await Beer.find(query);
     console.log(allProducts);
     resp.send(allProducts);
 });
 
-app.get("/", async (req, resp) => {
+app.get("/juice", async (req, resp) => {
     const query = {};
     const allProducts = await Juice.find(query);
     console.log(allProducts);
     resp.send(allProducts);
 });
 
-app.get("/", async (req, resp) => {
+app.get("/soda", async (req, resp) => {
     const query = {};
     const allProducts = await Soda.find(query);
     console.log(allProducts);
     resp.send(allProducts);
+});
+
+app.get("/:productName", async (req, resp) => {
+    const productName = req.params.productName;
+    const query = { productName: productName};
+    const allReviewsByProduct = await Review.find(query);
+    console.log(allReviewsByProduct);
+    resp.send(allReviewsByProduct);
 });
 
 //-----------------------------------------------------------

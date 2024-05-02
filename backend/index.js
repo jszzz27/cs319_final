@@ -2,7 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const Product = require('./dataSchema.js');
+const Water = require('./dataSchemaWater.js');
+const Beer = require('./dataSchemaBeer.js');
+const Juice = require('./dataSchemaJuice.js');
+const Soda = require('./dataSchemaSoda.js');
+const Review = require('./dataSchemaReview.js');
 
 app.use(express.json());
 app.use(cors());
@@ -25,12 +29,37 @@ app.listen(port, () => {
     console.log(`App listening at http://%s:%s`, host, port);
 });
 
+//-----------------------------------------------------------
+
 app.get("/", async (req, resp) => {
     const query = {};
-    const allProducts = await Product.find(query);
+    const allProducts = await Water.find(query);
     console.log(allProducts);
     resp.send(allProducts);
 });
+
+app.get("/", async (req, resp) => {
+    const query = {};
+    const allProducts = await Beer.find(query);
+    console.log(allProducts);
+    resp.send(allProducts);
+});
+
+app.get("/", async (req, resp) => {
+    const query = {};
+    const allProducts = await Juice.find(query);
+    console.log(allProducts);
+    resp.send(allProducts);
+});
+
+app.get("/", async (req, resp) => {
+    const query = {};
+    const allProducts = await Soda.find(query);
+    console.log(allProducts);
+    resp.send(allProducts);
+});
+
+//-----------------------------------------------------------
 
 app.get("/:id", async (req, resp) => {
     const id = req.params.id;

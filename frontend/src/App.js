@@ -242,7 +242,7 @@ function App() {
       </div>
 
       <div className='m-4'>
-        {menu === 2 && <div>
+        {menu === 1 && <div>
           <h1 className='text-center text-danger'>Show All Products</h1>
           <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllProducts()}>Show All</button></div>
           <hr></hr>
@@ -255,7 +255,7 @@ function App() {
           <hr></hr>
         </div>}
 
-        {menu === 1 && <div>
+        {menu === 2 && <div>
           <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Product</h1>
           <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
             <div className="row mb-3">

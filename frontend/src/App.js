@@ -303,26 +303,30 @@ function App() {
           
         </div>}
 
-        {menu === 2 && <div onClick={() => getAllBeerProducts()}>
+        {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
+          { getAllBeerProducts() }
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
-        {menu === 3 && <div onClick={() => getAllWaterProducts()}>
+        {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>
+          { getAllWaterProducts() }
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
-        {menu === 4 && <div onClick={() => getAllSodaProducts()}>
+        {menu === 4 && <div>
           <h1 className='text-center text-danger'>Soda</h1>
+          { getAllSodaProducts() }
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
-        {menu === 5 && <div onClick={() => getAllJuiceProducts()}>
+        {menu === 5 && <div>
           <h1 className='text-center text-danger'>Juice</h1>
+          { getAllJuiceProducts() }
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}

@@ -3,6 +3,11 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [product, setProduct] = useState([]);
+  const [water, setWater] = useState([]);
+  const [beer, setBeer] = useState([]);
+  const [soda, setSoda] = useState([]);
+  const [juice, setJuice] = useState([]);
+
   const [viewer1, setViewer1] = useState(false);
 
   const [oneProduct, setOneProduct] = useState([]);
@@ -25,12 +30,12 @@ function App() {
 
   const [addNewRating, setAddNewRating] = useState(0);
 
-  useEffect(() => {
-    getAllBeerProducts();
-    // getAllWaterProducts();
-    // getAllSodaProducts();
-    // getAllJuiceProducts();
-  }, [checked4]);
+  // useEffect(() => {
+  //   getAllBeerProducts();
+  //   // getAllWaterProducts();
+  //   // getAllSodaProducts();
+  //   // getAllJuiceProducts();
+  // }, [checked4]);
 
   function getAllBeerProducts() {
     fetch("http://localhost:4000/beer")
@@ -38,7 +43,7 @@ function App() {
       .then((data) => {
         console.log("Show Catalog of Products :");
         console.log(data);
-        setProduct(data);
+        setBeer(data);
       });
   }
 
@@ -48,7 +53,7 @@ function App() {
       .then((data) => {
         console.log("Show Catalog of Products :");
         console.log(data);
-        setProduct(data);
+        setWater(data);
       });
   }
 
@@ -58,7 +63,7 @@ function App() {
       .then((data) => {
         console.log("Show Catalog of Products :");
         console.log(data);
-        setProduct(data);
+        setSoda(data);
       });
   }
 
@@ -68,7 +73,7 @@ function App() {
       .then((data) => {
         console.log("Show Catalog of Products :");
         console.log(data);
-        setProduct(data);
+        setJuice(data);
       });
   }
 
@@ -211,7 +216,43 @@ function App() {
     window.location.reload();
   }
 
-  const showAllItems = product.map((el) => (
+  const showAllWater = water.map((el) => (
+    <div key={el.beerID} className='col mt-3'>
+      <div className='card border border-dark' style={{ width: `18rem` }}>
+        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
+        </div>
+      </div>
+    </div>
+  ));
+
+  const showAllBeer = beer.map((el) => (
+    <div key={el.beerID} className='col mt-3'>
+      <div className='card border border-dark' style={{ width: `18rem` }}>
+        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
+        </div>
+      </div>
+    </div>
+  ));
+
+  const showAllSoda = soda.map((el) => (
+    <div key={el.beerID} className='col mt-3'>
+      <div className='card border border-dark' style={{ width: `18rem` }}>
+        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
+        </div>
+      </div>
+    </div>
+  ));
+
+  const showAllJuice = juice.map((el) => (
     <div key={el.beerID} className='col mt-3'>
       <div className='card border border-dark' style={{ width: `18rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
@@ -264,30 +305,30 @@ function App() {
 
         {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
-          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllBeerProducts()}>Show All</button></div>
+          {/* <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllBeerProducts()}>Show All</button></div> */}
           <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllItems}</span></div>
+          <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
         {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>
           <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllWaterProducts()}>Show All</button></div>
           <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllItems}</span></div>
+          <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
         {menu === 4 && <div>
           <h1 className='text-center text-danger'>Soda</h1>
           <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllSodaProducts()}>Show All</button></div>
           <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllItems}</span></div>
+          <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
         {menu === 5 && <div>
           <h1 className='text-center text-danger'>Juice</h1>
           <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllJuiceProducts()}>Show All</button></div>
           <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllItems}</span></div> 
+          <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}
       </div>
     </div>

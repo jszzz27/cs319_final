@@ -106,6 +106,7 @@ function App() {
     } else if (evt.target.name === "rating") {
       console.log(value);
       setAddNewRating({ ...addNewRating, rating: value });
+    }
   }
 
   function handleUpdateChange(evt) {
@@ -245,8 +246,8 @@ function App() {
           <div className="container-fluid">
             <div className="collapse navbar-collapse justify-content-center">
               <div className="btn-group-lg" role="group">
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(1)}>Main</button>
-                <button className="btn btn-danger" aria-current="page" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(2)}>Beer</button>
+                <button className="btn btn-danger" aria-current="page" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(1)}>Main</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(2)}>Beer</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(3)}>Water</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(4)}>Soda</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(5)}>Juice</button>
@@ -292,5 +293,5 @@ function App() {
     </div>
   );
 }
-} // App end
+// App end
 export default App

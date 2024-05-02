@@ -38,11 +38,27 @@ app.get("/water", async (req, resp) => {
     resp.send(allProducts);
 });
 
+app.get("/water/:waterID", async (req, resp) => {
+    const waterID = req.params.waterID;
+    const query = { waterID : waterID };
+    const oneProduct = await Water.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
+});
+
 app.get("/beer", async (req, resp) => {
     const query = {};
     const allProducts = await Beer.find(query);
     console.log(allProducts);
     resp.send(allProducts);
+});
+
+app.get("/beer/:beerID", async (req, resp) => {
+    const beerID = req.params.beerID;
+    const query = { beerID : beerID };
+    const oneProduct = await Water.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
 });
 
 app.get("/juice", async (req, resp) => {
@@ -52,11 +68,27 @@ app.get("/juice", async (req, resp) => {
     resp.send(allProducts);
 });
 
+app.get("/juice/:juiceID", async (req, resp) => {
+    const juiceID = req.params.juiceID;
+    const query = { waterID : juiceID };
+    const oneProduct = await Water.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
+});
+
 app.get("/soda", async (req, resp) => {
     const query = {};
     const allProducts = await Soda.find(query);
     console.log(allProducts);
     resp.send(allProducts);
+});
+
+app.get("/soda/:sodaID", async (req, resp) => {
+    const sodaID = req.params.sodaID;
+    const query = { waterID : sodaID };
+    const oneProduct = await Water.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
 });
 
 app.get("/:productName", async (req, resp) => {
@@ -68,14 +100,6 @@ app.get("/:productName", async (req, resp) => {
 });
 
 //-----------------------------------------------------------
-
-app.get("/:id", async (req, resp) => {
-    const id = req.params.id;
-    const query = { _id: id };
-    const oneProduct = await Product.findOne(query);
-    console.log(oneProduct);
-    resp.send(oneProduct);
-});
 
 app.post("/insert", async (req, res) => {
     console.log(req.body);

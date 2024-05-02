@@ -1,8 +1,20 @@
 [
     {
-        "product": "figi",
-        "name": "asdf",
-        "review": "asdfas",
+        "username": "junsang",
+        "productName": "Beet Juice",
+        "comment": "very good",
+        "rating": 3.4
+    },
+    {
+        "username": "antonio",
+        "productName": "Apple Juice",
+        "comment": "very nice",
+        "rating": 3.4
+    },
+    {
+        "username": "ali",
+        "productName": "Beet Juice",
+        "comment": "disgusting",
         "rating": 3.4
     }
 ]

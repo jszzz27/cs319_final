@@ -1,6 +1,6 @@
 [
         {
-            "sodaId": "1",
+            "sodaID": 1,
 
             "title": "Coke",
             "url": "./../images/soda/coke.jpg",
@@ -8,7 +8,7 @@
             "macro_img": "./../images/soda/cokeMac.jpg"
         },
         {
-            "sodaId": "2",
+            "sodaID": 2,
 
             "title": "Dr Pepper",
             "url": "./../images/soda/dp.jpg",
@@ -16,7 +16,7 @@
             "macro_img": "./../images/soda/drpMac.jpg"
         },
         {
-            "sodaId": "3",
+            "sodaID": 3,
 
             "title": "Sprite",
             "url": "./../images/soda/sprite.jpg",
@@ -24,35 +24,35 @@
             "macro_img": "./../images/soda/sprMac.jpg"
         },
         {
-          "sodaId": "4",
+          "sodaID": 4,
           "title": "Pepsi",
           "url": "./../images/soda/pepsi.jpg",
           "description": "Pepsi, a globally recognized cola beverage produced by PepsiCo, is celebrated for its bold and refreshing taste. Crafted from a blend of carbonated water, high-fructose corn syrup, caramel color, phosphoric acid, caffeine, and natural flavorings, Pepsi offers a distinctively sweet and robust flavor profile. Its effervescent bubbles and smooth texture create a satisfying drinking experience enjoyed by millions worldwide. With its iconic blue, red, and white branding and the timeless Pepsi logo, the beverage has become a symbol of youthfulness and energy. Whether enjoyed on its own or paired with a favorite meal, Pepsi continues to delight consumers with its refreshing and uplifting taste.",
           "macro_img": "./../images/soda/pepsiMac.jpg"
         },
         {
-          "sodaId": "5",
+          "sodaID": 5,
           "title": "A&W Root Beer",
           "url": "./../images/soda/rb.jpg",
           "description": "A&W Root Beer, a classic American soft drink, is renowned for its smooth and creamy flavor with hints of vanilla and spices. Crafted from carbonated water, cane sugar, natural and artificial flavors, and caramel color, A&W Root Beer delivers a nostalgic taste experience that has delighted consumers for generations. Its rich brown color and frothy foam make it visually appealing, while its sweet and refreshing taste makes it a favorite beverage choice. A&W's signature branding, featuring the iconic frosted mug logo, evokes memories of old-fashioned soda fountains and family gatherings. Whether enjoyed straight from the bottle, poured over ice cream for a root beer float, or mixed into cocktails, A&W Root Beer continues to be a beloved beverage enjoyed by people of all ages.",
           "macro_img": "./../images/soda/rbMac.jpg"
         },
         {
-            "sodaId": "6",
+            "sodaID": 6,
             "title": "Fanta",
             "url": "./../images/soda/fanta.jpg",
             "description": "Fanta, a vibrant and fruity carbonated soft drink, is celebrated for its bold flavors and refreshing taste. Produced by The Coca-Cola Company, Fanta comes in a variety of flavors, including orange, grape, pineapple, and strawberry. Crafted from carbonated water, high-fructose corn syrup, natural flavors, and citric acid, Fanta offers a sweet and tangy flavor profile that appeals to a wide range of palates. Its bright and colorful packaging, featuring playful graphics and the iconic Fanta logo, reflects the drink's fun and energetic personality. Whether enjoyed on its own or mixed into creative cocktails and mocktails, Fanta continues to captivate consumers with its delicious and invigorating taste.",
             "macro_img": "./../images/soda/fantaMac.jpg"
           },
           {
-            "sodaId": "7",
+            "sodaID": 7,
             "title": "Canada Dry",
             "url": "./../images/soda/ga.jpg",
             "description": "Canada Dry Ginger Ale, a popular ginger-flavored soft drink, is renowned for its crisp and refreshing taste with a hint of spice. Crafted from carbonated water, high-fructose corn syrup, citric acid, natural flavors, and ginger extract, Canada Dry offers a uniquely smooth and bubbly drinking experience. Its pale golden color and effervescent bubbles make it visually appealing, while its distinctive ginger flavor provides a satisfying balance of sweetness and spice. Canada Dry's iconic green label and elegant branding evoke a sense of sophistication and quality. Whether enjoyed on its own or used as a mixer in cocktails and mocktails, Canada Dry Ginger Ale remains a beloved beverage choice for its timeless taste and versatility.",
             "macro_img": "./../images/soda/cdMac.jpg"
           },
           {
-            "sodaId": "8",
+            "sodaID": 8,
             "title": "7 Up",
             "url": "./../images/soda/up7.jpg",
             "description": "7 Up, a popular lemon-lime flavored soda, is celebrated for its crisp and refreshing taste. Crafted from carbonated water, high-fructose corn syrup, citric acid, natural flavors, and potassium citrate, 7 Up offers a tangy yet sweet flavor profile that appeals to consumers of all ages. Its clear appearance and effervescent bubbles make it visually enticing, while its light and zesty taste make it a favorite thirst-quenching beverage. 7 Up's iconic green packaging and the distinctive red dot logo are instantly recognizable worldwide. Whether enjoyed on its own or mixed with other beverages, 7 Up continues to be a go-to option for those seeking a refreshing and uplifting soft drink.",

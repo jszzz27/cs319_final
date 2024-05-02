@@ -303,30 +303,26 @@ function App() {
           
         </div>}
 
-        {menu === 2 && <div>
+        {menu === 2 && <div onClick={() => getAllBeerProducts()}>
           <h1 className='text-center text-danger'>Beer</h1>
-          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllBeerProducts()}>Show All</button></div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
-        {menu === 3 && <div>
+        {menu === 3 && <div onClick={() => getAllWaterProducts()}>
           <h1 className='text-center text-danger'>Water</h1>
-          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllWaterProducts()}>Show All</button></div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
-        {menu === 4 && <div>
+        {menu === 4 && <div onClick={() => getAllSodaProducts()}>
           <h1 className='text-center text-danger'>Soda</h1>
-          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllSodaProducts()}>Show All</button></div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
-        {menu === 5 && <div>
+        {menu === 5 && <div onClick={() => getAllJuiceProducts()}>
           <h1 className='text-center text-danger'>Juice</h1>
-          <div id='showall'><button className='btn btn-danger btn-lg' onClick={() => getAllJuiceProducts()}>Show All</button></div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}

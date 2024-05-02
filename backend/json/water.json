@@ -1,0 +1,71 @@
+{
+    "waters": [
+        {
+            "waterId": "1",
+            "itemLink": "./water_item1.html",
+            "title": "Arrowhead",
+            "url": "./../../images/water/ah.jpg",
+            "description": "Arrowhead is a well-known brand of bottled water originating from California. Sourced from natural mountain springs, Arrowhead water is celebrated for its crisp, refreshing taste and purity. The water undergoes a thorough filtration process to ensure it meets high-quality standards before bottling. Arrowhead offers a range of products, including still water and sparkling water, providing options for various preferences. Its iconic blue label and mountain spring logo symbolize the brand's commitment to delivering natural, pristine water to consumers. Whether enjoyed as a hydrating beverage on the go or used in cooking and hydration, Arrowhead remains a trusted choice for its reliable quality and refreshing taste.",
+            "macro_img": "./../../images/water/ahMac.jpg"
+        },
+        {
+            "waterId": "2",
+            "itemLink": "./water_item2.html",
+            "title": "Aquafina",
+            "url": "./../../images/water/aquafina.jpg",
+            "description": "Aquafina, a popular brand of bottled water owned by PepsiCo, is known for its crisp and clean taste. Sourced from public water supplies, Aquafina undergoes a rigorous purification process, including reverse osmosis, to ensure its quality and purity. The result is a refreshing and hydrating beverage that is free from any added flavors or ingredients. Available in various bottle sizes and formats, Aquafina offers convenience for on-the-go hydration. Its sleek and recognizable packaging, featuring the brand's distinctive blue label, makes it easy to spot on store shelves. Whether enjoyed during workouts, outdoor activities, or simply as a refreshing drink throughout the day, Aquafina remains a popular choice for its reliable quality and refreshing taste.",
+            "macro_img": "./../../images/water/aqMac.jpg"
+        },
+        {
+            "waterId": "3",
+            "itemLink": "./water_item3.html",
+            "title": "Dasani",
+            "url": "./../../images/water/das.jpg",
+            "description": "Dasani, a brand of bottled water owned by The Coca-Cola Company, is renowned for its crisp and pure taste. Sourced from local municipal water supplies, Dasani undergoes a comprehensive purification process that includes reverse osmosis and advanced filtration technologies. This process ensures the removal of impurities while retaining essential minerals for a refreshing and hydrating experience. Dasani offers a range of bottle sizes and packaging options to suit different preferences and lifestyles. Its sleek and distinctive packaging, featuring a clear bottle with a blue label, reflects the brand's commitment to transparency and quality. Whether enjoyed at home, on-the-go, or as a convenient hydration option during workouts or outdoor activities, Dasani continues to be a popular choice for its consistent quality and refreshing taste.",
+            "macro_img": "./../../images/water/dasMac.jpg"
+        },
+        {
+          "waterId": "4",
+          "itemLink": "./water_item4.html",
+          "title": "Fiji",
+          "url": "./../../images/water/fiji.jpg",
+          "description": "Fiji Water, a premium bottled water brand, is celebrated for its purity and unique mineral composition. Sourced from an artesian aquifer deep within the pristine Yaqara Valley in Fiji, Fiji Water undergoes a natural filtration process through volcanic rock layers, resulting in a smooth and crisp taste. The water's high silica content gives it a distinctive soft mouthfeel, while its balanced mineral profile adds to its refreshing quality. Fiji Water is bottled at the source in a sustainable manner, using renewable energy, and packaged in iconic square bottles made from recycled materials. Its elegant packaging and commitment to environmental stewardship reflect the brand's dedication to quality and sustainability. Whether enjoyed as a hydrating beverage or incorporated into wellness routines, Fiji Water remains a symbol of purity and luxury in the bottled water market.",
+          "macro_img": "./../../images/water/fijiMac.jpg"
+        },
+        {
+          "waterId": "5",
+          "itemLink": "./water_item5.html",
+          "title": "Glaceau Smartwater",
+          "url": "./../../images/water/gs.jpg",
+          "description": "Glaceau Smartwater, a brand under the Coca-Cola Company, offers a unique take on bottled water with its vapor-distilled water infused with electrolytes for a crisp and refreshing taste. Sourced from spring water, Smartwater goes through a process of vapor distillation, where the water is vaporized, then condensed to remove impurities, resulting in a pure and clean taste. Additionally, electrolytes such as calcium, magnesium, and potassium are added to enhance hydration and replenish the body. Smartwater is known for its sleek and modern packaging, featuring a clear bottle with a blue label, reflecting its innovative and contemporary branding. Whether used for rehydration during workouts, outdoor activities, or simply as a convenient beverage option, Glaceau Smartwater continues to be a popular choice for its refreshing taste and hydration benefits.",
+          "macro_img": "./../../images/water/gsMac.jpg"
+        },
+        {
+            "waterId": "6",
+            "itemLink": "./water_item6.html",
+            "title": "Icelandic Glacial",
+            "url": "./../../images/water/ig.jpg",
+            "description": "Icelandic Glacial is a premium bottled water brand sourced from the Ölfus Spring in Iceland, known for its pristine purity and refreshing taste. Filtered through layers of volcanic rock, Icelandic Glacial water naturally acquires its distinctively smooth and crisp flavor. The water is protected from pollution and human interference, ensuring its exceptional quality. Icelandic Glacial is bottled at the source using sustainable practices, including the use of geothermal energy. Its packaging reflects the brand's commitment to sustainability, featuring recyclable materials and eco-friendly practices. Whether enjoyed on its own or as a complement to fine dining, Icelandic Glacial water offers a luxurious hydration experience that appeals to discerning consumers seeking purity and quality.",
+            "macro_img": "./../../images/water/igMac.jpg"
+          },
+          {
+            "waterId": "7",
+            "itemLink": "./water_item7.html",
+            "title": "Ice Mountain",
+            "url": "./../../images/water/im.jpg",
+            "description": "Ice Mountain is a prominent brand of bottled water, known for its crisp and refreshing taste sourced from natural springs in the Midwest region of the United States. The water undergoes a thorough filtration process, ensuring purity and quality while preserving its natural mineral content. Ice Mountain offers a range of products, including still water and sparkling water, providing options to suit various preferences. Its commitment to sustainability is reflected in its eco-friendly packaging and efforts to minimize environmental impact. Ice Mountain's clear bottles with blue labels make it easily recognizable on store shelves. Whether used for hydration on-the-go, in-home consumption, or as a base for beverages, Ice Mountain remains a trusted choice for its reliable quality and refreshing taste.",
+            "macro_img": "./../../images/water/imMac.jpg"
+          },
+          {
+            "waterId": "8",
+            "itemLink": "./water_item8.html",
+            "title": "Voss",
+            "url": "./../../images/water/voss.jpg",
+            "description": "Voss is a premium brand of bottled water originating from Norway, known for its exceptional purity and distinctive cylindrical glass bottles. Sourced from an artesian aquifer deep beneath the surface, Voss water is naturally filtered through layers of sand and rock, resulting in a crisp and clean taste. The water is untouched by human hands until it is bottled at the source, preserving its pristine quality. Voss offers still and sparkling varieties, catering to different preferences for hydration. Its sleek and elegant packaging, featuring minimalist design and a signature cylindrical bottle, adds to its appeal as a premium beverage option. Whether enjoyed at upscale events, fine dining establishments, or for everyday hydration, Voss water embodies luxury and sophistication, making it a favored choice among discerning consumers.",
+            "macro_img": "./../../images/water/vossMac.jpg"
+          }
+    ]
+  }
+  
+  
+        

@@ -1,0 +1,71 @@
+{
+    "juices": [
+        {
+            "juiceId": "1",
+            "itemLink": "./juice_item1.html",
+            "title": "Apple Juice",
+            "url": "./../../images/juice/aj.jpg",
+            "description": "Mott's Apple Juice, a beloved beverage made from the finest apples, is celebrated for its crisp and natural taste. Crafted from 100% pure apple juice, Mott's offers a refreshing and flavorful experience that captures the essence of freshly picked apples. Its light golden color and slightly sweet aroma make it inviting to the senses. Mott's commitment to quality ensures that each sip delivers a burst of fruity goodness without any added sugars or artificial flavors. Whether enjoyed chilled on its own or mixed into cocktails and mocktails, Mott's Apple Juice remains a favorite choice for families and juice enthusiasts alike, providing a wholesome and delicious option for hydration and enjoyment.",
+            "macro_img": "./../../images/juice/ajMac.jpg"
+        },
+        {
+            "juiceId": "2",
+            "itemLink": "./juice_item2.html",
+            "title": "Beet Juice",
+            "url": "./../../images/juice/beetj.jpg",
+            "description": "Blueprint Beet Juice is a vibrant and nutritious beverage crafted from fresh, cold-pressed beets. Known for its bold color and earthy flavor, Blueprint Beet Juice offers a unique taste experience that combines sweetness with a hint of natural earthiness. Packed with essential nutrients like vitamins, minerals, and antioxidants, this juice provides a healthful boost and supports overall well-being. Its smooth texture and refreshing taste make it an enjoyable option for those looking to incorporate more vegetables into their diet. Whether sipped solo or blended into smoothies, Blueprint Beet Juice offers a convenient and delicious way to fuel the body and nourish the soul.",
+            "macro_img": "./../../images/juice/bjMac.jpg"
+        },
+        {
+            "juiceId": "3",
+            "itemLink": "./juice_item3.html",
+            "title": "Cranberry Juice",
+            "url": "./../../images/juice/cj.jpg",
+            "description": "Ocean Spray Cranberry Juice, a beloved beverage made from ripe cranberries, is celebrated for its tart and refreshing taste. Crafted from 100% cranberry juice, Ocean Spray offers a bold and invigorating flavor experience that captures the essence of the cranberry fruit. Its rich ruby-red color and tangy aroma make it visually appealing and enticing to the senses. Ocean Spray's commitment to quality ensures that each sip delivers a burst of fruity goodness without any added sugars or artificial flavors. Whether enjoyed on its own, mixed into cocktails, or used as a base for smoothies and mocktails, Ocean Spray Cranberry Juice remains a favorite choice for those seeking a flavorful and healthful beverage option.",
+            "macro_img": "./../../images/juice/cranjMac.jpg"
+        },
+        {
+          "juiceId": "4",
+          "itemLink": "./juice_item4.html",
+          "title": "Grape Juice",
+          "url": "./../../images/juice/wgj.jpg",
+          "description": "Welch's Grape Juice, a beloved beverage made from Concord grapes, is celebrated for its rich and fruity flavor. Crafted from 100% grape juice, Welch's offers a delicious and satisfying taste experience that captures the essence of freshly harvested grapes. Its deep purple color and sweet aroma make it visually appealing and enticing to the senses. Welch's commitment to quality ensures that each sip delivers a burst of grape goodness without any added sugars or artificial flavors. Whether enjoyed chilled on its own, mixed into cocktails, or used as a base for smoothies and mocktails, Welch's Grape Juice remains a favorite choice for families and grape juice enthusiasts alike, providing a flavorful and nutritious option for hydration and enjoyment.",
+          "macro_img": "./../../images/juice/gjMac.jpg"
+        },
+        {
+          "juiceId": "5",
+          "itemLink": "./juice_item5.html",
+          "title": "Green Juice",
+          "url": "./../../images/juice/greenj.jpg",
+          "description": "Blueprint Green Juice is a vibrant and nutrient-packed beverage crafted from a blend of fresh green vegetables and fruits. Known for its refreshing taste and vibrant color, Blueprint Green Juice offers a unique flavor profile that balances sweetness with a hint of earthiness. Packed with essential vitamins, minerals, and antioxidants, this juice provides a healthful boost and supports overall well-being. Its smooth texture and invigorating taste make it an enjoyable option for those looking to incorporate more greens into their diet. Whether sipped solo as a refreshing pick-me-up or incorporated into a cleansing regimen, Blueprint Green Juice offers a convenient and delicious way to fuel the body and nourish the soul.",
+          "macro_img": "./../../images/juice/grnjMac.jpg"
+        },
+        {
+            "juiceId": "6",
+            "itemLink": "./juice_item6.html",
+            "title": "Lemon Juice",
+            "url": "./../../images/juice/lem.jpg",
+            "description": "Great Value Lemonade, a popular beverage from the Walmart brand, is celebrated for its refreshing and tangy flavor. Crafted from a blend of water, lemon juice concentrate, sugar, and natural flavors, Great Value Lemonade offers a classic and satisfying taste experience reminiscent of homemade lemonade. Its bright yellow color and citrusy aroma make it visually appealing and enticing to the senses. Great Value's commitment to quality ensures that each sip delivers a burst of lemony goodness without any artificial flavors or high fructose corn syrup. Whether enjoyed chilled on a hot summer day, mixed into cocktails, or served as a base for fruity punches, Great Value Lemonade remains a favorite choice for its affordability and deliciously refreshing taste.",
+            "macro_img": "./../../images/juice/lemMac.jpg"
+          },
+          {
+            "juiceId": "7",
+            "itemLink": "./juice_item7.html",
+            "title": "Orange Juice",
+            "url": "./../../images/juice/oj.jpg",
+            "description": "Simply Orange Juice, a premium brand known for its high-quality and natural ingredients, offers a delightful and pure orange juice experience. Crafted from carefully selected oranges, Simply Orange Juice is pressed and strained to maintain the fruit's natural flavor and nutrients. Free from added preservatives, colors, or artificial flavors, Simply Orange Juice provides a fresh and authentic taste that captures the essence of ripe oranges. Its vibrant color and aromatic citrus aroma make it visually appealing and enticing to the senses. Whether enjoyed chilled as a morning pick-me-up or used as a base for cocktails and smoothies, Simply Orange Juice remains a favorite choice for those seeking a wholesome and delicious beverage option.",
+            "macro_img": "./../../images/juice/ojMac.jpg"
+          },
+          {
+            "juiceId": "8",
+            "itemLink": "./juice_item8.html",
+            "title": "Pinapple Juice",
+            "url": "./../../images/juice/pj.jpg",
+            "description": "Pineapple juice, a tropical and refreshing beverage, is celebrated for its sweet and tangy flavor profile. Made from ripe pineapples, this juice offers a burst of tropical goodness with every sip. Its vibrant yellow color and tropical aro./../../images of sunny beaches and exotic destinations. Pineapple juice is not only delicious but also packed with essential vitamins, minerals, and antioxidants, making it a nutritious choice for hydration. Whether enjoyed on its own, mixed into cocktails, or used as a base for smoothies and mocktails, pineapple juice remains a popular choice for its delightful taste and versatility.",
+            "macro_img": "./../../images/juice/pjMac.jpg"
+          }
+    ]
+  }
+  
+  
+        

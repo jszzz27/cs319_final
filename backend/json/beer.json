@@ -1,0 +1,71 @@
+{
+    "beers": [
+        {
+            "beerId": "1",
+            "itemLink": "./beer_item1.html",
+            "title": "Budlight",
+            "url": "./../../images/beer/budlight.jpg",
+            "description": "Bud Light is a popular American beer known for its light and refreshing taste. Brewed by Anheuser-Busch, it's crafted using high-quality ingredients like barley malt, rice, and hops, resulting in a smooth and crisp flavor profile. With its lower alcohol content compared to traditional beers, Bud Light is often favored for casual social gatherings and sporting events. Its iconic blue and white packaging makes it easily recognizable on shelves worldwide. Whether enjoyed straight from the bottle or poured into a frosty glass, Bud Light remains a go-to choice for those seeking a classic, easy-drinking beer experience.",
+            "macro_img": "./../../images/beer/budMac.jpg"
+        },
+        {
+            "beerId": "2",
+            "itemLink": "./beer_item2.html",
+            "title": "Corona",
+            "url": "./../../images/beer/corona.jpg",
+            "description": "Corona, a renowned Mexican beer, is celebrated for its distinctive light and citrus-infused taste. Produced by Grupo Modelo, it's a pale lager that has gained global popularity for its crisp and refreshing flavor. With a touch of malt sweetness and a hint of hop bitterness, Corona is often served with a wedge of lime, adding a zesty twist to the drinking experience. The clear, transparent bottle and the iconic crown logo contribute to its recognizable branding. Widely enjoyed at beaches, parties, and bars, Corona has become a symbol of laid-back, easygoing moments, making it a staple choice for those seeking a relaxed and flavorful beer.",
+            "macro_img": "./../../images/beer/corMac.jpg"
+        },
+        {
+            "beerId": "3",
+            "itemLink": "./beer_item3.html",
+            "title": "Modelo",
+            "url": "./../../images/beer/modelo.jpg",
+            "description": "Modelo, originating from Mexico, is a premium beer brand recognized for its rich and robust flavor profile. Brewed by Grupo Modelo, it offers a distinct blend of malt sweetness and hop bitterness, resulting in a balanced taste that appeals to beer enthusiasts worldwide. Whether it's Modelo Especial, characterized by its golden hue and crisp finish, or Modelo Negra, boasting a darker color with caramel and chocolate notes, each variant offers a unique drinking experience. Packaged in elegant glass bottles adorned with the brand's iconic emblem, Modelo exudes sophistication and quality. Enjoyed both on its own and paired with a variety of cuisines, Modelo has established itself as a go-to choice for those seeking a flavorful and satisfying beer.",
+            "macro_img": "./../../images/beer/modMac.jpg"
+        },
+        {
+          "beerId": "4",
+          "itemLink": "./beer_item4.html",
+          "title": "Stella Artois",
+          "url": "./../../images/beer/stella_artois.jpg",
+          "description": "Stella Artois, a Belgian pilsner brewed since 1926, is renowned for its crisp, refreshing taste and iconic chalice presentation. Crafted with carefully selected hops and barley, it delivers a smooth and balanced flavor profile with a subtle bitterness. Known for its pale golden color and creamy white head, Stella Artois is a symbol of sophistication and quality in the beer world. Its distinctive packaging, featuring the brand's elegant logo and signature gold foil, reflects its premium status. Whether enjoyed at a casual gathering or a formal occasion, Stella Artois offers a timeless drinking experience appreciated by beer connoisseurs worldwide.",
+          "macro_img": "./../../images/beer/saMac.jpg"
+        },
+        {
+          "beerId": "5",
+          "itemLink": "./beer_item5.html",
+          "title": "Dos Equis",
+          "url": "./../../images/beer/equis.jpg",
+          "description": "Dos Equis, a beloved Mexican beer brand, is renowned for its rich history, distinctive taste, and memorable advertising campaigns. Brewed by Cuauhtémoc Moctezuma Brewery, it offers a unique blend of malt sweetness and hop bitterness, resulting in a crisp and flavorful drinking experience. Dos Equis is available in two main variants: Dos Equis Lager Especial, known for its golden color and balanced taste, and Dos Equis Ambar, characterized by its darker hue and caramel malt notes. With its iconic label featuring the image of The Most Interesting Man in the World, Dos Equis has become synonymous with adventure, sophistication, and a hint of humor. Whether enjoyed at a beachside bar or a backyard barbecue, Dos Equis is a go-to choice for those seeking a refreshing and memorable beer.",
+          "macro_img": "./../../images/beer/doseqMac.jpg"
+        },
+        {
+          "beerId": "6",
+          "itemLink": "./beer_item6.html",
+          "title": "Blue Moon",
+          "url": "./../../images/beer/blueMoon.jpg",
+          "description": "Blue Moon, a popular American craft beer, is celebrated for its unique Belgian-style wheat ale brewed with Valencia orange peel and coriander. Produced by the Molson Coors Beverage Company, it offers a distinctive flavor profile characterized by hints of citrus and spice, balanced with a smooth, creamy texture. Blue Moon's cloudy appearance, reminiscent of its Belgian roots, adds to its allure, while its refreshing taste makes it a favorite among beer enthusiasts. Often garnished with a slice of orange to enhance its citrus notes, Blue Moon is known for its approachable yet complex flavor profile. Whether enjoyed at a cozy pub or a lively gathering, Blue Moon offers a refreshing and memorable beer-drinking experience.",
+          "macro_img": "./../../images/beer/bmMac.jpg"
+        },
+        {
+          "beerId": "7",
+          "itemLink": "./beer_item7.html",
+          "title": "Bush",
+          "url": "./../../images/beer/bush.jpg",
+          "description": "Bush, a Belgian beer produced by Dubuisson Brewery, is renowned for its rich history and distinctive taste. Crafted with a unique blend of malted barley, hops, and yeast, Bush offers a complex flavor profile characterized by notes of caramel, spice, and fruitiness. With a higher alcohol content than typical beers, Bush packs a punch while still maintaining a smooth and balanced taste. Its deep amber color and creamy head make it visually appealing, while its robust flavor appeals to beer enthusiasts seeking a more intense drinking experience. Whether sipped slowly to savor its complexities or enjoyed alongside hearty cuisine, Bush is a favorite choice for those craving a bold and flavorful Belgian ale.",
+          "macro_img": "./../../images/beer/bushMac.jpg"
+        },
+        {
+          "beerId": "8",
+          "itemLink": "./beer_item8.html",
+          "title": "Guinness",
+          "url": "./../../images/beer/guinness.jpg",
+          "description": "Guinness, an iconic Irish stout brewed by the Guinness Brewery, is renowned for its rich flavor, creamy texture, and distinctive dark color. Crafted with roasted barley, hops, water, and yeast, Guinness offers a complex flavor profile featuring notes of coffee, chocolate, and a subtle bitterness. Its velvety smoothness and thick, creamy head set it apart from other beers, creating a luxurious drinking experience. Whether enjoyed on its own or in classic cocktails like the Guinness and Black, this stout is a symbol of Irish heritage and craftsmanship. With its centuries-old brewing tradition and iconic branding, Guinness remains a beloved choice for those seeking a full-bodied and satisfying beer.",
+          "macro_img": "./../../images/beer/guinMac.jpg"
+        }
+    ]
+  }
+  
+  
+        

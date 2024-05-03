@@ -299,8 +299,9 @@ function App() {
       </div>
 
       <div className='m-4'>
-        {menu === 1 && <div>
-          
+       {menu === 1 && <div>
+          <h1 className='text-center text-danger'>Main</h1>
+          <hr></hr>
         </div>}
 
         {menu === 2 && <div onClick={() => getAllBeerProducts()}>

@@ -375,69 +375,73 @@ function App() {
 
       <div className='m-4'>
       {menu === 1 && (
-        <div className="container">
-          <div className="row mt-5">
+          <div className="container" style={{
+            backgroundImage: `url('data:image/jpeg;base64,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')`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            backgroundBlendMode: 'overlay'
+          }}>
+            <div className="row mt-5">
               <div className="col-md-6">
-                  <h2>Top 3 Soda Brands:</h2>
-                  <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
+                <h2>Top 3 Soda Brands:</h2>
+                <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
               </div>
               <div className="col-md-6">
-                  <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+                <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
               </div>
-          </div>
-          <div className="row mt-5">
+            </div>
+            <div className="row mt-5">
               <div className="col-md-6">
-                  <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
-              </div>
-              <div className="col-md-6">
-                  <h2>Top 3 Beer Brands:</h2>
-                  <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
-              </div>
-          </div>
-          <div className="row mt-5">
-              <div className="col-md-6">
-                  <h2>Top 3 Water Brands:</h2>
-                  <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
+                <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
               </div>
               <div className="col-md-6">
-                  <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+                <h2>Top 3 Beer Brands:</h2>
+                <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
               </div>
-          </div>
-          <div className="row mt-5">
+            </div>
+            <div className="row mt-5">
               <div className="col-md-6">
-                  <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+                <h2>Top 3 Water Brands:</h2>
+                <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
               </div>
               <div className="col-md-6">
-                  <h2>Top 3 Juice Brands:</h2>
-                  <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+                <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
               </div>
-          </div>
-
-          <hr></hr>
-
-          <div className="row mt-6">
-            <div className="col-md-4">
+            </div>
+            <div className="row mt-5">
+              <div className="col-md-6">
+                <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+              </div>
+              <div className="col-md-6">
+                <h2>Top 3 Juice Brands:</h2>
+                <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+              </div>
+            </div>
+            <hr></hr>
+            <div className="row mt-6">
+              <div className="col-md-4">
                 <img id="profile" src="./myotherimages/junsange.jpg" alt="junsang" width="160px" height="200px" />
                 <h2 className="fw-normal">Jun-Sang Kim</h2>
                 <p id="email">junsange@iastate.edu</p>
                 <p>My name is Jun-Sang Kim, and I am a junior at Iowa State University majoring in Software Engineering. This is my first time learning about HTML, CSS, JavaScript, and web development, which means all the techniques and skills I am developing and utilizing here are basically all from the content of this course. However, as a student majoring in Software Engineering field, I have learned various types of languages and skills, such as C, C++, Java, Android Studio, MySQL, and Git, that can be transferred to this course and are actually helpful for me to understand the content easily.</p>
-            </div>
-            <div className="col-md-4">
+              </div>
+              <div className="col-md-4">
                 <h2>About Us</h2>
                 <p>Iowa State University - May 5th, Spring 2024</p>
                 <p>SE / COM S 319 - Construction of User Interfaces</p>
                 <p>We are here to provide you a chance to select the best beverage in your lifetime.</p>
                 <p>Welcome to the Paradise.</p>
-            </div>
-            <div className="col-md-4">
+              </div>
+              <div className="col-md-4">
                 <img id="profile" src="./myotherimages/antonio.jpg" alt="antonio" width="160px" height="200px"/>
                 <h2 className="fw-normal">Antonio Perez</h2>
                 <p id="email">avperez@iastate.edu</p>
                 <p>My name is Antonio Perez; I am a senior here at Iowa State University majoring in Aerospace Engineering and minoring in Computer Science. While my background is mainly in engineering and design, I have experience with VS code, Git, and various coding languages. This is my first course where I have been introduced to HTML, CSS and Javascript. However, my skillset has aligned me for quick learning and ample problem-solving skills. These will prove essential for the midterm and the work that will come beyond this project's scope.</p>
+              </div>
             </div>
-        </div>
-      </div>
-      )}
+          </div>
+        )}
 
       {menu === 2 && 
         <div style={{

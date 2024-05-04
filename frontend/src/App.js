@@ -37,6 +37,9 @@ function App() {
   const [filteredSoda, setFilteredSoda] = useState([]);
   const [filteredJuice, setFilteredJuice] = useState([]);
 
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isItemSelected, setIsItemSelected] = useState(false);
+
   useEffect(() => {
     const filtered = beer.filter(item =>
       item.title.toLowerCase().includes(filter.toLowerCase())
@@ -278,7 +281,8 @@ function App() {
 
   const showAllBeer = filteredBeer.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
-      <div className='card border border-dark' style={{ width: `25rem` }}>
+      <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
+        onClick={() => setSelectedProduct(el)}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
@@ -287,6 +291,29 @@ function App() {
       </div>
     </div>
   ));
+
+  const showSelectedProduct = () => {
+    if (selectedProduct) {
+      return (
+        <div className='selected-product'>
+          <div className='selected-product-img'>
+            <img src={selectedProduct.url} alt={selectedProduct.title} />
+          </div>
+          <div className='selected-product-details'>
+            <h2>{selectedProduct.title}</h2>
+            <p>{selectedProduct.description}</p>
+            <button onClick={() => handleGoBack()}>Go Back</button>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const handleGoBack = () => {
+    setSelectedProduct(null);
+    setIsItemSelected(false);
+  };
 
   const showAllSoda = filteredSoda.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
@@ -469,18 +496,41 @@ function App() {
       )}
 
         {menu === 2 && <div>
-          <h1 className='text-center text-danger'>Beer</h1>
-          <div class="search-container" className='text-center'>
-            <form action="/action_page.php">
-              <input type="text" placeholder="Search.." name="search"
-                onChange={(e) => {
-                  setFilter(e.target.value);
-                }}></input>
-            </form>
+          {!isItemSelected && <h1 className='text-center text-danger'>Beer</h1>}
+          {!isItemSelected && (
+          <div>
+            <div className="search-container text-center">
+              <form action="/action_page.php">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  onChange={(e) => setFilter(e.target.value)}
+                />
+              </form>
+            </div>
+            <hr />
+            <div className='row row-cols-auto'>
+              {filteredBeer.map((el) => (
+                <div key={el.beerID} className='col-3 px-2'>
+                  <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
+                  onClick={() => {
+                    setSelectedProduct(el);
+                    setIsItemSelected(true);
+                  }}>
+                    <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+                    <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
-        </div>}
+          )}
+        {isItemSelected && showSelectedProduct()}
+      </div>}
 
         {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>

@@ -226,8 +226,8 @@ function App() {
   }
 
   const showAllWater = water.map((el) => (
-    <div key={el.beerID} className='col mt-3'>
-      <div className='card border border-dark' style={{ width: `18rem` }}>
+    <div key={el.beerID} className='col-3 px-2'>
+      <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
@@ -238,8 +238,8 @@ function App() {
   ));
 
   const showAllBeer = beer.map((el) => (
-    <div key={el.beerID} className='col mt-3'>
-      <div className='card border border-dark' style={{ width: `18rem` }}>
+    <div key={el.beerID} className='col-3 px-2'>
+      <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
@@ -250,8 +250,8 @@ function App() {
   ));
 
   const showAllSoda = soda.map((el) => (
-    <div key={el.beerID} className='col mt-3'>
-      <div className='card border border-dark' style={{ width: `18rem` }}>
+    <div key={el.beerID} className='col-3 px-2'>
+      <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
@@ -262,8 +262,8 @@ function App() {
   ));
 
   const showAllJuice = juice.map((el) => (
-    <div key={el.beerID} className='col mt-3'>
-      <div className='card border border-dark' style={{ width: `18rem` }}>
+    <div key={el.beerID} className='col-3 px-2'>
+      <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
@@ -275,7 +275,7 @@ function App() {
 
   const showOneItem = oneProduct.map((el) => (
     <div key={el._id} style={{marginLeft: '42%', marginTop: '1%'}}>
-      <div className='card border border-dark' style={{ width: `18rem` }}>
+      <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.image} width={20} alt={el.title} className='card-img-top' />
         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
           <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>

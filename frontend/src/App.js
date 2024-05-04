@@ -401,7 +401,6 @@ function App() {
               <span className="carousel-control-next-icon"></span>
             </a>
           </div>
-      
 
           <hr></hr>
 

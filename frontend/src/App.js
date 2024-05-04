@@ -301,11 +301,6 @@ function App() {
       <div className='m-4'>
       {menu === 1 && (
         <div className="container">
-        <div className="row">
-          <div className="col">
-            <h1 className="text-center mt-5">Best Beverages</h1>
-          </div>
-        </div>
         <div className="row mt-5">
           <div className="col-md-6">
             <h2>Top 3 Soda Brands:</h2>

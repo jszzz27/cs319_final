@@ -301,30 +301,42 @@ function App() {
       <div className='m-4'>
       {menu === 1 && (
         <div className="container">
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <h2>Top 3 Soda Brands:</h2>
-            <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
-            <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Soda Brands:</h2>
+                  <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+              </div>
           </div>
-          <div className="col-md-6">
-            <h2>Top 3 Beer Brands:</h2>
-            <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
-            <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Beer Brands:</h2>
+                  <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+              </div>
           </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <h2>Top 3 Water Brands:</h2>
-            <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
-            <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Water Brands:</h2>
+                  <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+              </div>
           </div>
-          <div className="col-md-6">
-            <h2>Top 3 Juice Brands:</h2>
-            <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
-            <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Juice Brands:</h2>
+                  <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+              </div>
           </div>
-        </div>
       </div>
       )}
 

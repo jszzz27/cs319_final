@@ -413,7 +413,7 @@ function App() {
             </div>
             <div className="row mt-5">
               <div className="col-md-6">
-                <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+                <img src="https://m.media-amazon.com/images/I/613-zxyw0cL._AC_UF1000,1000_QL80_DpWeblab_.jpg" className="img-fluid" alt="Guinness" />
               </div>
               <div className="col-md-6">
                 <h2>Top 3 Beer Brands:</h2>
@@ -426,12 +426,12 @@ function App() {
                 <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
               </div>
               <div className="col-md-6">
-                <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+                <img src="https://i0.wp.com/sporked.com/wp-content/uploads/2023/03/BEST_BOTTLED_WATER_HEADER.jpg?fit=1920%2C1080&ssl=1" className="img-fluid" alt="Evian" />
               </div>
             </div>
             <div className="row mt-5">
               <div className="col-md-6">
-                <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+                <img src="https://imgix.ranker.com/list_img_v2/5523/2565523/original/2565523-u3?fit=crop&fm=pjpg&q=80&dpr=2&w=1200&h=720" className="img-fluid" alt="Tropicana" />
               </div>
               <div className="col-md-6">
                 <h2>Top 3 Juice Brands:</h2>

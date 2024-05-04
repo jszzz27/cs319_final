@@ -200,9 +200,9 @@ p {
 
 .image-crop img {
   position: absolute;
-  top: -50%; /* adjust as needed */
-  left: 100%; /* adjust as needed */
-  height: 100%;
+  top: 50%; /* adjust as needed */
+  left: 0%; /* adjust as needed */
+  height: 50%;
   width: 100%;
   object-fit: cover;
 }

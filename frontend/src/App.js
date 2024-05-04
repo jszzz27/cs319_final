@@ -312,11 +312,11 @@ function App() {
           </div>
           <div className="row mt-5">
               <div className="col-md-6">
-                  <h2>Top 3 Beer Brands:</h2>
-                  <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
+                  <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
               </div>
               <div className="col-md-6">
-                  <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+                  <h2>Top 3 Beer Brands:</h2>
+                  <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
               </div>
           </div>
           <div className="row mt-5">
@@ -330,11 +330,11 @@ function App() {
           </div>
           <div className="row mt-5">
               <div className="col-md-6">
-                  <h2>Top 3 Juice Brands:</h2>
-                  <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+                  <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
               </div>
               <div className="col-md-6">
-                  <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+                  <h2>Top 3 Juice Brands:</h2>
+                  <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
               </div>
           </div>
       </div>

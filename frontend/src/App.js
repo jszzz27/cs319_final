@@ -30,6 +30,44 @@ function App() {
 
   const [addNewRating, setAddNewRating] = useState(0);
 
+  const [filter, setFilter] = useState('');
+  const [filteredBeer, setFilteredBeer] = useState([]);
+  const [filteredWater, setFilteredWater] = useState([]);
+  const [filteredSoda, setFilteredSoda] = useState([]);
+  const [filteredJuice, setFilteredJuice] = useState([]);
+
+  useEffect(() => {
+    const filtered = beer.filter(item =>
+      item.title.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredBeer(filtered);
+  }, [filter, beer]);
+
+  useEffect(() => {
+    const filtered = water.filter(item =>
+      item.title.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredWater(filtered);
+  }, [filter, water]);
+
+  useEffect(() => {
+    const filtered = soda.filter(item =>
+      item.title.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredSoda(filtered);
+  }, [filter, soda]);
+
+  useEffect(() => {
+    const filtered = juice.filter(item =>
+      item.title.toLowerCase().includes(filter.toLowerCase())
+    );
+    setFilteredJuice(filtered);
+  }, [filter, juice]);
+
+  useEffect(() => {
+    getAllBeerProducts();
+  }, [filter]);
+
   useEffect(() => {
     getAllBeerProducts();
   }, []);
@@ -225,7 +263,7 @@ function App() {
     window.location.reload();
   }
 
-  const showAllWater = water.map((el) => (
+  const showAllWater = filteredWater.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
       <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
@@ -237,7 +275,7 @@ function App() {
     </div>
   ));
 
-  const showAllBeer = beer.map((el) => (
+  const showAllBeer = filteredBeer.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
       <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
@@ -249,7 +287,7 @@ function App() {
     </div>
   ));
 
-  const showAllSoda = soda.map((el) => (
+  const showAllSoda = filteredSoda.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
       <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
@@ -261,7 +299,7 @@ function App() {
     </div>
   ));
 
-  const showAllJuice = juice.map((el) => (
+  const showAllJuice = filteredJuice.map((el) => (
     <div key={el.beerID} className='col-3 px-2'>
       <div className='card border border-dark' style={{ width: `25rem` }}>
         <img src={el.url} width={20} alt={el.title} className='card-img-top' />
@@ -373,24 +411,56 @@ function App() {
 
         {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
+          <div class="search-container" className='text-center'>
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}></input>
+            </form>
+          </div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
         {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>
+          <div class="search-container" className='text-center'>
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}></input>
+            </form>
+          </div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
         {menu === 4 && <div>
           <h1 className='text-center text-danger'>Soda</h1>
+          <div class="search-container" className='text-center'>
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}></input>
+            </form>
+          </div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
         {menu === 5 && <div>
           <h1 className='text-center text-danger'>Juice</h1>
+          <div class="search-container" className='text-center'>
+            <form action="/action_page.php">
+              <input type="text" placeholder="Search.." name="search"
+                onChange={(e) => {
+                  setFilter(e.target.value);
+                }}></input>
+            </form>
+          </div>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}

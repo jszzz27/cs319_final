@@ -347,7 +347,10 @@ function App() {
               </div>
               <div className="col-md-7">
                   <h2>About Us</h2>
-                  <p><br>Iowa State University</br>SE / COM S 319<br>Construction of User Interfaces</br><br>March 9th, Spring 2024</br><br>We are here to provide you a chance to select the best beverage in your lifetime.</br>Welcome to the Paradise.</p>
+                  <p>Iowa State University - May 5th, Spring 2024</p>
+                  <p>SE / COM S 319 - Construction of User Interfaces</p>
+                  <p>We are here to provide you a chance to select the best beverage in your lifetime.</p>
+                  <p>Welcome to the Paradise.</p>
               </div>
               <div className="col-md-7">
                   <img id="profile" src="./myotherimages/antonio.jpg" alt="antonio" width="160px" height="200px"/>

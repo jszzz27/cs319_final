@@ -310,29 +310,63 @@ function App() {
       <div className='m-4'>
       {menu === 1 && (
         <div className="container">
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <h2>Top 3 Soda Brands:</h2>
-            <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
-            <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Soda Brands:</h2>
+                  <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+              </div>
           </div>
-          <div className="col-md-6">
-            <h2>Top 3 Beer Brands:</h2>
-            <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
-            <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+              </div>
+              <div className="col-md-6">
+                  <h2>Top 3 Beer Brands:</h2>
+                  <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
+              </div>
           </div>
-        </div>
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <h2>Top 3 Water Brands:</h2>
-            <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
-            <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <h2>Top 3 Water Brands:</h2>
+                  <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
+              </div>
+              <div className="col-md-6">
+                  <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+              </div>
           </div>
-          <div className="col-md-6">
-            <h2>Top 3 Juice Brands:</h2>
-            <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
-            <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+          <div className="row mt-5">
+              <div className="col-md-6">
+                  <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+              </div>
+              <div className="col-md-6">
+                  <h2>Top 3 Juice Brands:</h2>
+                  <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+              </div>
           </div>
+
+          <div className="row mt-6">
+            <div className="col-md-4">
+                <img id="profile" src="./myotherimages/junsange.jpg" alt="junsang" width="160px" height="200px" />
+                <h2 className="fw-normal">Jun-Sang Kim</h2>
+                <p id="email">junsange@iastate.edu</p>
+                <p>My name is Jun-Sang Kim, and I am a junior at Iowa State University majoring in Software Engineering. This is my first time learning about HTML, CSS, JavaScript, and web development, which means all the techniques and skills I am developing and utilizing here are basically all from the content of this course. However, as a student majoring in Software Engineering field, I have learned various types of languages and skills, such as C, C++, Java, Android Studio, MySQL, and Git, that can be transferred to this course and are actually helpful for me to understand the content easily.</p>
+            </div>
+            <div className="col-md-4">
+                <h2>About Us</h2>
+                <p>Iowa State University - May 5th, Spring 2024</p>
+                <p>SE / COM S 319 - Construction of User Interfaces</p>
+                <p>We are here to provide you a chance to select the best beverage in your lifetime.</p>
+                <p>Welcome to the Paradise.</p>
+            </div>
+            <div className="col-md-4">
+                <img id="profile" src="./myotherimages/antonio.jpg" alt="antonio" width="160px" height="200px"/>
+                <h2 className="fw-normal">Antonio Perez</h2>
+                <p id="email">avperez@iastate.edu</p>
+                <p>My name is Antonio Perez; I am a senior here at Iowa State University majoring in Aerospace Engineering and minoring in Computer Science. While my background is mainly in engineering and design, I have experience with VS code, Git, and various coding languages. This is my first course where I have been introduced to HTML, CSS and Javascript. However, my skillset has aligned me for quick learning and ample problem-solving skills. These will prove essential for the midterm and the work that will come beyond this project's scope.</p>
+            </div>
         </div>
       </div>
       )}

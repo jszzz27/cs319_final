@@ -21,14 +21,6 @@ function App() {
 
   const [menu, setMenu] = useState(2);
 
-  const express = require('express');
-  const app = express();
-  const path = require('path');
-
-  app.use('/images', express.static(path.join(__dirname, 'images')));
-
-  app.listen(4000, () => console.log('Server is running on port 4000'));
-
   const [addNewReview, setAddNewReview] = useState({
     username: "",
     productName: "",

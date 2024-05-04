@@ -98,3 +98,22 @@ p {
   background-color: pink !important;
   border-color: pink !important;
 }
+
+.carousel-indicators li {
+  background-color: pink;
+}
+
+.carousel-indicators .active {
+  background-color: red;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black;
+}
+
+.carousel-caption {
+  color: white;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

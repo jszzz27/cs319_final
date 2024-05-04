@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [product, setProduct] = useState([]);
@@ -364,6 +365,8 @@ function App() {
               </a>
           </div>
 
+          <hr></hr>
+
           <div className="row mt-5">
               <div className="col-md-6">
                   <h2>Top 3 Soda Brands:</h2>
@@ -400,6 +403,8 @@ function App() {
                   <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
               </div>
           </div>
+
+          <hr></hr>
 
           <div className="row mt-6">
             <div className="col-md-4">

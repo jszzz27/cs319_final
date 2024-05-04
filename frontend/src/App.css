@@ -93,3 +93,8 @@ p {
     max-width: 100%;
   }
 }
+
+.btn-danger {
+  background-color: pink !important;
+  border-color: pink !important;
+}

@@ -499,6 +499,14 @@ function App() {
       }
 
         {menu === 4 && <div>
+          <div style={{
+            backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzvcZT3TwWZdlnehELDmR2uD-qS3Eey7Erew&s')`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            backgroundBlendMode: 'overlay'
+          }}>
+
           <h1 className='text-center text-danger'>Soda</h1>
           <div class="search-container" className='text-center'>
             <form action="/action_page.php">

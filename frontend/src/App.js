@@ -30,51 +30,60 @@ function App() {
 
   const [addNewRating, setAddNewRating] = useState(0);
 
-  // useEffect(() => {
-  //   getAllBeerProducts();
-  //   // getAllWaterProducts();
-  //   // getAllSodaProducts();
-  //   // getAllJuiceProducts();
-  // }, [checked4]);
+  useEffect(() => {
+    getAllBeerProducts();
+  }, []);
+
+  useEffect(() => {
+    getAllWaterProducts();
+  }, []);
+
+  useEffect(() => {
+    getAllSodaProducts();
+  }, []);
+
+  useEffect(() => {
+    getAllJuiceProducts();
+  }, []);
 
   function getAllBeerProducts() {
     fetch("http://localhost:4000/beer")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Show Catalog of Products :");
-        console.log(data);
-        setBeer(data);
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setBeer(data);
+    });
   }
 
   function getAllWaterProducts() {
     fetch("http://localhost:4000/water")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Show Catalog of Products :");
-        console.log(data);
-        setWater(data);
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setWater(data);
+    });
   }
 
   function getAllSodaProducts() {
     fetch("http://localhost:4000/soda")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Show Catalog of Products :");
-        console.log(data);
-        setSoda(data);
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setSoda(data);
+    });
   }
 
   function getAllJuiceProducts() {
     fetch("http://localhost:4000/juice")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Show Catalog of Products :");
-        console.log(data);
-        setJuice(data);
-      });
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setJuice(data);
+    });
   }
 
   function getOneProduct(id) {
@@ -330,39 +339,24 @@ function App() {
 
         {menu === 2 && <div>
           <h1 className='text-center text-danger'>Beer</h1>
-          <script type="text/javascript">
-            {getAllBeerProducts()}
-          </script>
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllBeer}</span></div>
         </div>}
 
         {menu === 3 && <div>
           <h1 className='text-center text-danger'>Water</h1>
-          <script type="text/javascript">
-            {getAllWaterProducts()}
-          </script>
-          {/* { getAllWaterProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllWater}</span></div>
         </div>}
 
         {menu === 4 && <div>
           <h1 className='text-center text-danger'>Soda</h1>
-          <script type="text/javascript">
-            {getAllSodaProducts()}
-          </script>
-          {/* { getAllSodaProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllSoda}</span></div>
         </div>}
 
         {menu === 5 && <div>
           <h1 className='text-center text-danger'>Juice</h1>
-          <script type="text/javascript">
-            {getAllJuiceProducts()}
-          </script>
-          {/* { getAllJuiceProducts() } */}
           <hr></hr>
           <div><span className='row row-cols-auto'>{showAllJuice}</span></div> 
         </div>}

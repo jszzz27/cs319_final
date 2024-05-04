@@ -50,89 +50,46 @@ html, body {
   }
 }
 
-#carouselExampleIndicators {
-  width: 100%;
-  margin-bottom: 1rem;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-#carouselExampleIndicators .carousel-inner {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-#carouselExampleIndicators .carousel-item {
-  position: relative;
-  display: none;
-  width: 100%;
-  transition: opacity 0.6s ease-in-out;
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
-#carouselExampleIndicators .carousel-item.active {
-  display: block;
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
-#carouselExampleIndicators .carousel-item img {
-  width: 100%;
+.img-fluid {
+  max-width: 100%;
   height: auto;
+  margin-top: 15px;
 }
 
-#carouselExampleIndicators .carousel-control-prev,
-#carouselExampleIndicators .carousel-control-next {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  display: inline-block;
-  width: auto;
-  height: auto;
-  margin-top: -25px;
-  color: #ffffff;
-  text-align: center;
-  opacity: 0.5;
-  transition: opacity 0.15s ease;
+.row {
+  margin-top: 30px;
 }
 
-#carouselExampleIndicators .carousel-control-prev:hover,
-#carouselExampleIndicators .carousel-control-next:hover {
-  color: #ffffff;
-  text-decoration: none;
-  opacity: 0.9;
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
 }
 
-#carouselExampleIndicators .carousel-control-prev {
-  left: 0;
-}
-
-#carouselExampleIndicators .carousel-control-next {
-  right: 0;
-}
-
-#carouselExampleIndicators .carousel-indicators {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  z-index: 15;
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-  margin-right: 0;
-  list-style: none;
-}
-
-#carouselExampleIndicators .carousel-indicators li {
-  box-sizing: content-box;
-  flex: 0 1 auto;
-  width: 30px;
-  height: 3px;
-  margin-right: 3px;
-  margin-left: 3px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5); /* Change the background color and opacity as desired */
-  border-radius: 5px;
-}
-
-#carouselExampleIndicators .carousel-indicators .active {
-  background-color: #ffffff; /* Change the active indicator color */
+@media (max-width: 767.98px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

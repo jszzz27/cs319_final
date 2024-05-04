@@ -299,40 +299,38 @@ function App() {
       </div>
 
       <div className='m-4'>
-      {menu === 1 && (<div>
-          <h1 className='text-center text-danger'>Main</h1>
-          <hr></hr>
-          <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-            <ol className="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            </ol>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-              <img className="d-block w-100" src="http://localhost:4000/images/main/mainBeer.jpg" alt="First slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="./backend/images/main/mainwater.jpg" alt="Second slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="./backend/images/main/mainsoda.jpg" alt="Third slide" />
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="./backend/images/main/mainjuice.jpg" alt="Fourth slide" />
-              </div>
-            </div>
-            <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="sr-only">Next</span>
-            </a>
+      {menu === 1 && (
+        <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1 className="text-center mt-5">Welcome to Our Website!</h1>
           </div>
         </div>
+        <div className="row mt-5">
+          <div className="col-md-6">
+            <h2>Favorite Soda Brand: Coca-Cola</h2>
+            <p>Coca-Cola is a classic favorite, known for its refreshing taste and iconic branding. Whether it's a regular Coke, Diet Coke, or Coca-Cola Zero, it's always a refreshing choice.</p>
+            <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+          </div>
+          <div className="col-md-6">
+            <h2>Favorite Beer Brand: Guinness</h2>
+            <p>Guinness is a legendary stout beer known for its rich, creamy texture and distinct flavor. It's the perfect choice for those who appreciate a quality brew with character.</p>
+            <img src="/images/guinness.jpg" className="img-fluid" alt="Guinness" />
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-md-6">
+            <h2>Favorite Water Brand: Evian</h2>
+            <p>Evian is renowned for its purity and crisp taste, sourced from natural springs in the French Alps. It's the ideal choice for staying hydrated and refreshed.</p>
+            <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
+          </div>
+          <div className="col-md-6">
+            <h2>Favorite Juice Brand: Tropicana</h2>
+            <p>Tropicana offers a wide range of delicious fruit juices, made from the finest quality fruits. From orange juice to apple juice, Tropicana never disappoints in delivering freshness and flavor.</p>
+            <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />
+          </div>
+        </div>
+      </div>
       )}
 
         {menu === 2 && <div>

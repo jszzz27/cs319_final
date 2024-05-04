@@ -314,12 +314,12 @@ function App() {
           </div>
         </div>
         <div className="row mt-5">
-          <div className="col-md-6" style={{ transform: 'translateY(50%)' }}>
+          <div className="col-md-6">
             <h2>Top 3 Water Brands:</h2>
             <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
             <img src="/images/evian.jpg" className="img-fluid" alt="Evian" />
           </div>
-          <div className="col-md-6" style={{ transform: 'translateY(-50%)' }}>
+          <div className="col-md-6">
             <h2>Top 3 Juice Brands:</h2>
             <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
             <img src="/images/tropicana.jpg" className="img-fluid" alt="Tropicana" />

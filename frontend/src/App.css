@@ -190,3 +190,19 @@ p {
 .selected-product-details p {
   margin: 0 0 10px 0;
 }
+
+.image-crop {
+  width: 100%; /* adjust as needed */
+  height: 50vh; /* adjust as needed */
+  overflow: hidden;
+  position: relative;
+}
+
+.image-crop img {
+  position: absolute;
+  top: -50%; /* adjust as needed */
+  left: -50%; /* adjust as needed */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

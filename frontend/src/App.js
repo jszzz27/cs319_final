@@ -40,6 +40,14 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isItemSelected, setIsItemSelected] = useState(false);
 
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    if (isItemSelected && selectedProduct) {
+      getAllReviewsByName(selectedProduct.productName);
+    }
+  }, [isItemSelected, selectedProduct]);
+
   useEffect(() => {
     const filtered = beer.filter(item =>
       item.title.toLowerCase().includes(filter.toLowerCase())
@@ -128,26 +136,26 @@ function App() {
     });
   }
 
-  function getOneProduct(id) {
-    console.log(id);
-    if (id >= 1) {
-      fetch("http://localhost:4000/" + id)
-        .then((response) => response.json())
+  function getAllReviewsByName(productName) {
+    console.log(productName);
+    if (productName) {
+      fetch(`http://localhost:4000/reviews/` + productName)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch reviews');
+          }
+          return response.json();
+        })
         .then((data) => {
-          console.log("Show one product :", id);
+          console.log("Show reviews for product:", productName);
           console.log(data);
-          const dataArr = [];
-          dataArr.push(data);
-          setOneProduct(dataArr);
-          setViewer2(!viewer2);
+          setReviews(data);
         })
-        .catch((err) => {
-          console.log("Wrong number of Product id.");
-          setViewer2(false);
-        })
+        .catch((error) => {
+          console.error('Error fetching reviews:', error);
+        });
     } else {
-      console.log("Wrong number of Product id.");
-      setViewer2(false);
+      console.log("Invalid product name.");
     }
   }
 
@@ -303,6 +311,18 @@ function App() {
             <h2>{selectedProduct.title}</h2>
             <p>{selectedProduct.description}</p>
             <button onClick={() => handleGoBack()}>Go Back</button>
+          </div>
+          <div className="reviews">
+            <h3>Reviews</h3>
+            <ul>
+              {reviews.map((review, index) => (
+                <li key={index}>
+                  <p>Username: {review.username}</p>
+                  <p>Comment: {review.comment}</p>
+                  <p>Rating: {review.rating}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       );
@@ -530,7 +550,32 @@ function App() {
             </div>
           </div>
           )}
-        {isItemSelected && showSelectedProduct()}
+        {isItemSelected && (
+            <div>
+              <div className='selected-product'>
+                <div className='selected-product-img'>
+                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                </div>
+                <div className='selected-product-details'>
+                  <h2>{selectedProduct.title}</h2>
+                  <p>{selectedProduct.description}</p>
+                  <button onClick={() => handleGoBack()}>Go Back</button>
+                </div>
+              </div>
+              <div className="reviews">
+                <h3>Reviews</h3>
+                <ul>
+                  {reviews.map((review, index) => (
+                    <li key={index}>
+                      <p>Username: {review.username}</p>
+                      <p>Comment: {review.comment}</p>
+                      <p>Rating: {review.rating}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
       </div>}
 
         {menu === 3 && <div>

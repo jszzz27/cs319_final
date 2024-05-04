@@ -1,19 +1,19 @@
 [
     {
         "username": "junsang",
-        "productName": "Beet Juice",
+        "productName": "Modelo",
         "comment": "very good",
         "rating": 3.4
     },
     {
         "username": "antonio",
-        "productName": "Apple Juice",
+        "productName": "Modelo",
         "comment": "very nice",
         "rating": 3.4
     },
     {
         "username": "ali",
-        "productName": "Beet Juice",
+        "productName": "Corona",
         "comment": "disgusting",
         "rating": 3.4
     }

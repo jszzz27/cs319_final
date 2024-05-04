@@ -408,7 +408,7 @@ function App() {
                 <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
               </div>
               <div className="col-md-6">
-                <img src="/images/coca-cola.jpg" className="img-fluid" alt="Coca-Cola" />
+                <img src="https://vinut.com.vn/wp-content/uploads/2023/12/website-65.png" className="img-fluid" alt="Coca-Cola" />
               </div>
             </div>
             <div className="row mt-5">

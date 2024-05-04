@@ -190,3 +190,9 @@ p {
 .selected-product-details p {
   margin: 0 0 10px 0;
 }
+
+.carousel-item {
+  background-size: cover;
+  background-position: center;
+  height: 500px; /* Adjust as needed */
+}

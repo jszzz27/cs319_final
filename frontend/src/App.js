@@ -311,16 +311,16 @@ function App() {
             </ol>
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img className="d-block w-100" src="./././backend/images/main/mainbeer.jpg" alt="First slide" />
+                <img className="d-block w-100" src="http://localhost:4000/images/main/mainbeer.jpg" alt="First slide" />
               </div>
               <div className="carousel-item">
-                <img className="d-block w-100" src="./././backend/images/main/mainwater.jpg" alt="Second slide" />
+                <img className="d-block w-100" src="./backend/images/main/mainwater.jpg" alt="Second slide" />
               </div>
               <div className="carousel-item">
-                <img className="d-block w-100" src="./././backend/images/main/mainsoda.jpg" alt="Third slide" />
+                <img className="d-block w-100" src="./backend/images/main/mainsoda.jpg" alt="Third slide" />
               </div>
               <div className="carousel-item">
-                <img className="d-block w-100" src="./././backend/images/main/mainjuice.jpg" alt="Fourth slide" />
+                <img className="d-block w-100" src="./backend/images/main/mainjuice.jpg" alt="Fourth slide" />
               </div>
             </div>
             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

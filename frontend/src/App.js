@@ -1004,7 +1004,7 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} style={{ marginLeft: `250px`}} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
@@ -1172,7 +1172,7 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} style={{ marginLeft: `250px`}} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
@@ -1361,7 +1361,7 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} style={{ marginLeft: `250px`}} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
@@ -1541,7 +1541,7 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} style={{ marginLeft: `250px`}} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>

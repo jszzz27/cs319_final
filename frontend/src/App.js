@@ -1004,23 +1004,23 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.Cal} Cal</p>
+                  <p>Calories: {selectedProduct.Cal}</p>
                   <p>Carbs: {selectedProduct.Carb} g</p>
                   <p>Alcohol %: {selectedProduct.Alc} %</p>
-                  <button onClick={() => handleGoBack()}>Go Back</button>
-                  <button onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
-                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>
               <div className="reviews">
                 <h3>Review</h3>
-                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <button className="btn btn-danger" onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
                 <div className='row row-cols-auto'>
                   {beerReview.map((el) => (
                     <div key={el.beerID} className='col-3 px-2'>
@@ -1172,21 +1172,21 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
                   <p>Sources: {selectedProduct.bottled}</p>
-                  <button onClick={() => handleGoBack()}>Go Back</button>
-                  <button onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
-                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
                 </div>
               </div>
               <hr></hr>
               <div className="reviews">
                 <h3>Review</h3>
-                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <button className="btn btn-danger" onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
                 <div className='row row-cols-auto'>
                   {waterReview.map((el) => (
                     <div key={el.waterID} className='col-3 px-2'>
@@ -1361,7 +1361,7 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
@@ -1369,15 +1369,15 @@ function App() {
                   <p>Calories: {selectedProduct.Cal}</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
                   <p>Caffine: {selectedProduct.Caf} mg</p>
-                  <button onClick={() => handleGoBack()}>Go Back</button>
-                  <button onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
-                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>
               <div className="reviews">
                 <h3>Review</h3>
-                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <button className="btn btn-danger" onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
                 <div className='row row-cols-auto'>
                   {sodaReview.map((el) => (
                     <div key={el.sodaID} className='col-3 px-2'>
@@ -1541,22 +1541,22 @@ function App() {
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
-                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                  <img src={selectedProduct.url} style={{ marginLeft: `250px`, borderRadius: '10px', border: '2px solid black',}} alt={selectedProduct.title} />
                 </div>
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
                   <p>Calories: {selectedProduct.Cal}</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
-                  <button onClick={() => handleGoBack()}>Go Back</button>
-                  <button onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
-                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>
               <div className="reviews">
                 <h3>Review</h3>
-                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <button className="btn btn-danger" onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
                 <div className='row row-cols-auto'>
                   {juiceReview.map((el) => (
                     <div key={el.juiceID} className='col-3 px-2'>

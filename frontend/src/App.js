@@ -40,10 +40,52 @@ function App() {
     Alc: "",
   });
 
+  const [addNewWater, setAddNewWater] = useState({
+    waterID: "",
+    title: "",
+    url: "",
+    description: "",
+    bottled: "",
+  });
+
+  const [addNewSoda, setAddNewSoda] = useState({
+    sodaID: "",
+    title: "",
+    url: "",
+    description: "",
+    Cal: "",
+    Sug: "",
+    Caf: "",
+  });
+
+  const [addNewJuice, setAddNewJuice] = useState({
+    juiceID: "",
+    title: "",
+    url: "",
+    description: "",
+    Cal: "",
+    Sug: "",
+  });
+
   const [updateBeerMacro, setUpdateBeerMacro] = useState({
     Cal: "",
     Carb: "",
     Alc: "",
+  })
+
+  const [updateWaterMacro, setUpdateWaterMacro] = useState({
+    bottled: "",
+  })
+
+  const [updateSodaMacro, setUpdateSodaMacro] = useState({
+    Cal: "",
+    Sug: "",
+    Caf: "",
+  })
+
+  const [updateJuiceMacro, setUpdateJuiceMacro] = useState({
+    Cal: "",
+    Sug: "",
   })
 
   useEffect(() => {
@@ -93,6 +135,24 @@ function App() {
   useEffect(() => {
     if (selectedProduct !== null) {
       getAllBeerReviews(selectedProduct.beerID);
+    }
+  }, [selectedProduct]);
+
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      getAllWaterReviews(selectedProduct.waterID);
+    }
+  }, [selectedProduct]);
+
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      getAllSodaReviews(selectedProduct.sodaID);
+    }
+  }, [selectedProduct]);
+
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      getAllJuiceReviews(selectedProduct.juiceID);
     }
   }, [selectedProduct]);
 
@@ -258,7 +318,7 @@ function App() {
       });
   }
 
-  //-----------------------------------------------------------------
+  //------------------------------------------------
 
   function getAllWaterProducts() {
     fetch("http://localhost:4000/water")
@@ -268,7 +328,139 @@ function App() {
       console.log(data);
       setWater(data);
     });
+    setViewer1(!viewer1);
   }
+
+  function handleWaterChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "waterID") {
+      setAddNewWater({ ...addNewWater, waterID: value });
+    } else if (evt.target.name === "title") {
+      setAddNewWater({ ...addNewWater, title: value });
+    } else if (evt.target.name === "url") {
+      setAddNewWater({ ...addNewWater, url: value });
+    } else if (evt.target.name === "description") {
+      setAddNewWater({ ...addNewWater, description: value });
+    } else if (evt.target.name === "bottled") {
+      setAddNewWater({ ...addNewWater, bottled: value });
+    }
+  }
+
+  function handleOnSubmitWater(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    fetch("http://localhost:4000/water/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewWater),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new water completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  function deleteOneWater(deleteid) {
+    console.log("Product to delete :", deleteid);
+    fetch("http://localhost:4000/water/delete/", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ waterID: deleteid }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Delete a product completed : ", deleteid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setChecked4(!checked4);
+    window.location.reload();
+  }
+
+  function handleUpdateWaterChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "updated_bottled") {
+      setUpdateWaterMacro({ ...updateWaterMacro, bottled: value });
+    }
+  }
+
+  function updateOneWater(updateid, new_bottled) {
+    fetch("http://localhost:4000/water/update/", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ waterID: updateid, bottled: new_bottled}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updating the product's price completed : ", updateid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setViewer1(false);
+    setChecked5(!checked5);
+    window.location.reload();
+  }
+
+  function getAllWaterReviews(id) {
+    console.log(id);
+    if (id >= 1) {
+      fetch("http://localhost:4000/water/review/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          setWaterReview(data);
+        })
+        .catch((err) => {
+          console.log("Wrong number of Product id.");
+        })
+    } else {
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleWaterReviewChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "username") {
+      setAddNewReview({ ...addNewReview, username: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewReview({ ...addNewReview, comment: value });
+    } else if (evt.target.name === "rating") {
+      setAddNewReview({ ...addNewReview, rating: value });
+    }
+  }
+
+  function handleOnSubmitWaterReview(id) {
+    fetch("http://localhost:4000/water/review/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewReview),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new water completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  //------------------------------------------------
 
   function getAllSodaProducts() {
     fetch("http://localhost:4000/soda")
@@ -278,7 +470,147 @@ function App() {
       console.log(data);
       setSoda(data);
     });
+    setViewer1(!viewer1);
   }
+
+  function handleSodaChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "soadID") {
+      setAddNewSoda({ ...addNewSoda, sodaID: value });
+    } else if (evt.target.name === "title") {
+      setAddNewSoda({ ...addNewSoda, title: value });
+    } else if (evt.target.name === "url") {
+      setAddNewSoda({ ...addNewSoda, url: value });
+    } else if (evt.target.name === "description") {
+      setAddNewSoda({ ...addNewSoda, description: value });
+    } else if (evt.target.name === "Cal") {
+      setAddNewSoda({ ...addNewSoda, Cal: value });
+    } else if (evt.target.name === "Sug") {
+      setAddNewSoda({ ...addNewSoda, Sug: value });
+    } else if (evt.target.name === "Caf") {
+      setAddNewSoda({ ...addNewSoda, Caf: value });
+    }
+  }
+
+  function handleOnSubmitSoda(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    fetch("http://localhost:4000/soda/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewSoda),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new soda completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  function deleteOneSoda(deleteid) {
+    console.log("Product to delete :", deleteid);
+    fetch("http://localhost:4000/soda/delete/", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sodaID: deleteid }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Delete a product completed : ", deleteid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setChecked4(!checked4);
+    window.location.reload();
+  }
+
+  function handleUpdateSodaChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "updated_Cal") {
+      setUpdateSodaMacro({ ...updateSodaMacro, Cal: value });
+    } else if (evt.target.name === "updated_Sug") {
+      setUpdateSodaMacro({ ...updateSodaMacro, Sug: value });
+    } else if (evt.target.name === "updated_Caf") {
+      setUpdateSodaMacro({ ...updateSodaMacro, Caf: value });
+    }
+  }
+
+  function updateOneSoda(updateid, new_Cal, new_Sug, new_Caf ) {
+    fetch("http://localhost:4000/soda/update/", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sodaID: updateid, Cal: new_Cal, Sug: new_Sug, Caf: new_Caf }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updating the product's price completed : ", updateid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setViewer1(false);
+    setChecked5(!checked5);
+    window.location.reload();
+  }
+
+  function getAllSodaReviews(id) {
+    console.log(id);
+    if (id >= 1) {
+      fetch("http://localhost:4000/soda/review/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          setSodaReview(data);
+        })
+        .catch((err) => {
+          console.log("Wrong number of Product id.");
+        })
+    } else {
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleSodaReviewChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "username") {
+      setAddNewReview({ ...addNewReview, username: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewReview({ ...addNewReview, comment: value });
+    } else if (evt.target.name === "rating") {
+      setAddNewReview({ ...addNewReview, rating: value });
+    }
+  }
+
+  function handleOnSubmitSodaReview(id) {
+    fetch("http://localhost:4000/soda/review/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewReview),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new soda completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  //------------------------------------------------
 
   function getAllJuiceProducts() {
     fetch("http://localhost:4000/juice")
@@ -288,7 +620,143 @@ function App() {
       console.log(data);
       setJuice(data);
     });
+    setViewer1(!viewer1);
   }
+
+  function handleJuiceChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "soadID") {
+      setAddNewJuice({ ...addNewJuice, juiceID: value });
+    } else if (evt.target.name === "title") {
+      setAddNewJuice({ ...addNewJuice, title: value });
+    } else if (evt.target.name === "url") {
+      setAddNewJuice({ ...addNewJuice, url: value });
+    } else if (evt.target.name === "description") {
+      setAddNewJuice({ ...addNewJuice, description: value });
+    } else if (evt.target.name === "Cal") {
+      setAddNewJuice({ ...addNewJuice, Cal: value });
+    } else if (evt.target.name === "Sug") {
+      setAddNewJuice({ ...addNewJuice, Sug: value });
+    }
+  }
+
+  function handleOnSubmitJuice(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    fetch("http://localhost:4000/juice/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewJuice),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new juice completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  function deleteOneJuice(deleteid) {
+    console.log("Product to delete :", deleteid);
+    fetch("http://localhost:4000/juice/delete/", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ juiceID: deleteid }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Delete a product completed : ", deleteid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setChecked4(!checked4);
+    window.location.reload();
+  }
+
+  function handleUpdateJuiceChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "updated_Cal") {
+      setUpdateJuiceMacro({ ...updateJuiceMacro, Cal: value });
+    } else if (evt.target.name === "updated_Sug") {
+      setUpdateJuiceMacro({ ...updateJuiceMacro, Sug: value });
+    }
+  }
+
+  function updateOneJuice(updateid, new_Cal, new_Sug) {
+    fetch("http://localhost:4000/juice/update/", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ juiceID: updateid, Cal: new_Cal, Sug: new_Sug}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Updating the product's price completed : ", updateid);
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+    setViewer1(false);
+    setChecked5(!checked5);
+    window.location.reload();
+  }
+
+  function getAllJuiceReviews(id) {
+    console.log(id);
+    if (id >= 1) {
+      fetch("http://localhost:4000/juice/review/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          setJuiceReview(data);
+        })
+        .catch((err) => {
+          console.log("Wrong number of Product id.");
+        })
+    } else {
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleJuiceReviewChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "username") {
+      setAddNewReview({ ...addNewReview, username: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewReview({ ...addNewReview, comment: value });
+    } else if (evt.target.name === "rating") {
+      setAddNewReview({ ...addNewReview, rating: value });
+    }
+  }
+
+  function handleOnSubmitJuiceReview(id) {
+    fetch("http://localhost:4000/juice/review/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewReview),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new juice completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  //------------------------------------------------
 
   return (
     <div style={{ minHeight: `100vh` }}>
@@ -577,10 +1045,10 @@ function App() {
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           backgroundBlendMode: 'overlay'
         }}>
-          {!isItemSelected && <h1 className='text-center text-danger'>Water</h1>}
-          {!isItemSelected && (
+          {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && <h1 className='text-center text-danger'>Water</h1>}
+          {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && (
           <div>
-            <div className="search-container text-center">
+            <div className="search-container text-center d-flex justify-content-center align-items-center">
               <form action="/action_page.php">
                 <input
                   type="text"
@@ -589,6 +1057,7 @@ function App() {
                   onChange={(e) => setFilter(e.target.value)}
                 />
               </form>
+              <button onClick={() => {handleButtonClick(); setIsSearchView(true)}} className="btn btn-danger ml-2" style={{ borderRadius: '0.5rem', marginLeft: '4rem' }}>Add a New Water</button>
             </div>
             <hr />
             <div className='row row-cols-auto'>
@@ -602,7 +1071,6 @@ function App() {
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                       <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-                      <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
                     </div>
                   </div>
                 </div>
@@ -610,7 +1078,94 @@ function App() {
             </div>
           </div>
           )}
-        {isItemSelected && (
+          {isSearchView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Water</h1>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Water ID</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="waterID" value={addNewWater.waterID} onChange={handleWaterChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="title" value={addNewWater.title} onChange={handleWaterChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Image URL</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="url" value={addNewWater.url} onChange={handleWaterChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Description</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="description" value={addNewWater.description} onChange={handleWaterChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Water Source(s)</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="bottled" value={addNewWater.bottled} onChange={handleWaterChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={handleOnSubmitWater} className="btn btn-danger col-auto">Submit</button>
+                </div>
+              </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+            </div>
+          )}
+          {isUpdateView && ( 
+          <div>
+            <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Update Water Source Information</h1>
+            <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Water Source</label>
+                <div className="col-sm-10">
+                  <input type="text" className="form-control form-control-lg" name="updated_bottled" value={updateWaterMacro.bottled} onChange={handleUpdateWaterChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <button type="submit" onClick={() => updateOneWater(selectedProduct.waterID, updateWaterMacro.bottled)} className="btn btn-danger col-auto">Update</button>
+              </div>
+            </form>
+            <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+          </div>
+          )}
+          {isAddReviewView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a Review</h1>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleWaterReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleWaterReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleWaterReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={() => handleOnSubmitWaterReview(selectedProduct.waterID)} className="btn btn-danger col-auto">Finish</button>
+                </div>
+              </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+            </div>
+          )}
+          {isItemSelected && (
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>
@@ -619,20 +1174,29 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
+                  <p>{selectedProduct.bottled}</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
+                  <button onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
+                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
                 </div>
               </div>
+              <hr></hr>
               <div className="reviews">
-                <h3>Reviews</h3>
-                <ul>
-                  {reviews.map((review, index) => (
-                    <li key={index}>
-                      <p>Username: {review.username}</p>
-                      <p>Comment: {review.comment}</p>
-                      <p>Rating: {review.rating}</p>
-                    </li>
+                <h3>Review</h3>
+                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <div className='row row-cols-auto'>
+                  {waterReview.map((el) => (
+                    <div key={el.waterID} className='col-3 px-2'>
+                      <div className='card border border-dark' style={{ width: `25rem` }}>
+                        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                          <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
+                          <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           )}

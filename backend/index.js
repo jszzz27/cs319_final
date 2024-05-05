@@ -178,36 +178,51 @@ app.post("/juice/:juiceID/review", async (req, res) => {
     }
 });
 
-//-----------------------------------------------------------
+app.post("/beer/create", async (req, res) => {
+    console.log(req.body);
+    const p_id = req.body._id;
+    const ptitle = req.body.title;
+    const pprice = req.body.price;
+    const pdescription = req.body.description;
+    const pcategory = req.body.category;
+    const pimage = req.body.image;
+    const prate = req.body.rating.rate;
+    const pcount = req.body.rating.count;
+    const formData = new Product({
+        _id: p_id,
+        title: ptitle,
+        price: pprice,
+        description: pdescription,
+        category: pcategory,
+        image: pimage,
+        rating: { rate: prate, count: pcount },
+    });
+    try {
+        await Product.create(formData);
+        const messageResponse = { message: `Product ${p_id} Added!` };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while adding a new product:" + err);
+    }
+});
 
-app.delete("/beer/:beerID/review/:reviewID", async (req, res) => {
+//----------------------------------------------------------------------
+
+app.delete("/delete/beer/:bearID", async (req, res) => {
     const beerID = req.params.beerID;
-    const reviewID = req.params.reviewID;
+    const query = { beerID : beerID };
 
     try {
-        // Find the beer by ID
-        const beer = await Beer.findOne({ beerID });
+        const oneProduct = await Beer.deleteOne(query);
 
-        if (!beer) {
+        if (!oneProduct) {
             return res.status(404).json({ message: "Beer not found" });
         }
 
-        // Find the index of the review in the reviews array
-        const reviewIndex = beer.review.findIndex(review => review._id.toString() === reviewID);
-
-        if (reviewIndex === -1) {
-            return res.status(404).json({ message: "Review not found" });
-        }
-
-        // Remove the review from the reviews array
-        beer.review.splice(reviewIndex, 1);
-
-        // Save the updated beer document
-        await beer.save();
-
-        res.status(200).json({ message: "Review deleted successfully" });
+        res.send(oneProduct);
+        res.status(201).json({ message: "Review added successfully" });
     } catch (error) {
-        console.error("Error while deleting review:", error);
+        console.error("Error while deleting a beer product:", error);
         res.status(500).json({ error: "Internal server error" });
     }
 });

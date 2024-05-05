@@ -46,6 +46,21 @@ app.get("/water/:waterID", async (req, resp) => {
     resp.send(oneProduct);
 });
 
+app.get("/water/review/:waterID", async (req, resp) => {
+    try {
+        const waterID = req.params.waterID;
+        const water = await Water.findOne({ waterID: waterID });
+        if (!water) {
+            return resp.status(404).json({ message: "Water not found" });
+        }
+        const reviews = water.review;
+        resp.status(200).json(reviews);
+    } catch (error) {
+        console.error("Error fetching water reviews:", error);
+        resp.status(500).json({ error: "Internal server error" });
+    }
+});
+
 app.get("/beer", async (req, resp) => {
     const query = {};
     const allProducts = await Beer.find(query);
@@ -59,6 +74,21 @@ app.get("/beer/:beerID", async (req, resp) => {
     const oneProduct = await Beer.findOne(query);
     console.log(oneProduct);
     resp.send(oneProduct);
+});
+
+app.get("/beer/review/:beerID", async (req, resp) => {
+    try {
+        const beerID = req.params.beerID;
+        const beer = await Beer.findOne({ beerID: beerID });
+        if (!beer) {
+            return resp.status(404).json({ message: "Beer not found" });
+        }
+        const reviews = beer.review;
+        resp.status(200).json(reviews);
+    } catch (error) {
+        console.error("Error fetching beer reviews:", error);
+        resp.status(500).json({ error: "Internal server error" });
+    }
 });
 
 app.get("/juice", async (req, resp) => {
@@ -76,6 +106,21 @@ app.get("/juice/:juiceID", async (req, resp) => {
     resp.send(oneProduct);
 });
 
+app.get("/juice/review/:juiceID", async (req, resp) => {
+    try {
+        const juiceID = req.params.juiceID;
+        const juice = await Juice.findOne({ juiceID: juiceID });
+        if (!juice) {
+            return resp.status(404).json({ message: "Juice not found" });
+        }
+        const reviews = juice.review;
+        resp.status(200).json(reviews);
+    } catch (error) {
+        console.error("Error fetching juice reviews:", error);
+        resp.status(500).json({ error: "Internal server error" });
+    }
+});
+
 app.get("/soda", async (req, resp) => {
     const query = {};
     const allProducts = await Soda.find(query);
@@ -89,6 +134,21 @@ app.get("/soda/:sodaID", async (req, resp) => {
     const oneProduct = await Soda.findOne(query);
     console.log(oneProduct);
     resp.send(oneProduct);
+});
+
+app.get("/soda/review/:sodaID", async (req, resp) => {
+    try {
+        const sodaID = req.params.sodaID;
+        const soda = await Soda.findOne({ sodaID: sodaID });
+        if (!soda) {
+            return resp.status(404).json({ message: "Soda not found" });
+        }
+        const reviews = soda.review;
+        resp.status(200).json(reviews);
+    } catch (error) {
+        console.error("Error fetching soda reviews:", error);
+        resp.status(500).json({ error: "Internal server error" });
+    }
 });
 
 //-----------------------------------------------------------
@@ -187,9 +247,6 @@ app.post("/beer/create", async (req, res) => {
     const pCal = req.body.Cal;
     const pCarb = req.body.Carb;
     const pAlc = req.body.Alc;
-    // const pusername = req.body.username;
-    // const pcomment = req.body.comment;
-    // const prating = req.body.rating;
     const formData = new Beer({
         beerID: pbeerID,
         title: ptitle,
@@ -199,7 +256,6 @@ app.post("/beer/create", async (req, res) => {
         Carb: pCarb,
         Alc: pAlc,
         Review : [],
-        // review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
         await Beer.create(formData);
@@ -217,16 +273,12 @@ app.post("/water/create", async (req, res) => {
     const purl = req.body.url;
     const pdescription = req.body.description;
     const pmacro_img = req.body.macro_img;
-    const pusername = req.body.username;
-    const pcomment = req.body.comment;
-    const prating = req.body.rating;
     const formData = new Water({
         waterID: pwaterID,
         title: ptitle,
         url: purl,
         description: pdescription,
         macro_img: pmacro_img,
-        review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
         await Water.create(formData);
@@ -244,16 +296,12 @@ app.post("/soda/create", async (req, res) => {
     const purl = req.body.url;
     const pdescription = req.body.description;
     const pmacro_img = req.body.macro_img;
-    const pusername = req.body.username;
-    const pcomment = req.body.comment;
-    const prating = req.body.rating;
     const formData = new Soda({
         sodaID: psodaID,
         title: ptitle,
         url: purl,
         description: pdescription,
         macro_img: pmacro_img,
-        review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
         await Soda.create(formData);
@@ -271,16 +319,12 @@ app.post("/juice/create", async (req, res) => {
     const purl = req.body.url;
     const pdescription = req.body.description;
     const pmacro_img = req.body.macro_img;
-    const pusername = req.body.username;
-    const pcomment = req.body.comment;
-    const prating = req.body.rating;
     const formData = new Juice({
         juiceID: pjuiceID,
         title: ptitle,
         url: purl,
         description: pdescription,
         macro_img: pmacro_img,
-        review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
         await Juice.create(formData);
@@ -299,7 +343,7 @@ app.delete("/beer/delete", async (req, res) => {
         const query = { beerID: req.body.beerID };
         await Beer.deleteOne(query);
         const messageResponse = {
-            message: `Product ${req.body._id} Deleted!`,
+            message: `Product ${req.body.beerID} Deleted!`,
         };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
@@ -309,34 +353,16 @@ app.delete("/beer/delete", async (req, res) => {
 
 //-----------------------------------------------------------
 
-app.put("/update", async (req, res) => {
-    console.log("Update :", req.body._id);
-    console.log("New Rating :", req.body.rating);
-
+app.put("/beer/update", async (req, res) => {
     try{
-        const filter = { _id: `${req.body._id}` };
-        const updateDoc = { $set: { rating: `${req.body.rating}`} };
-        await Review.updateOne(filter, updateDoc, null);
+        const filter = { beerID: `${req.body.beerID}` };
+        const updateDoc = { $set: { Cal: `${req.body.Cal}`, Carb: `${req.body.Carb}`, Alc: `${req.body.Alc}`} };
+        // const updateDoc = { $set: { Cal: `${req.body.Cal}`}};
+        await Beer.updateOne(filter, updateDoc, null);
         const messageResponse = {
-            message: `Review ${req.body_id} Updated!`
+            message: `Product ${req.body.beerID} Updated!`
         };
     } catch (err) {
-        console.log("Error while updating :" + p_id + " " + err);
-    }
-});
-
-app.put("/update", async (req, res) => {
-    console.log("Update :", req.body._id);
-    console.log("New Price :", req.body.price);
-
-    try{
-        const filter = { _id: `${req.body._id}` };
-        const updateDoc = { $set: { price: `${req.body.price}`} };
-        await Product.updateOne(filter, updateDoc, null);
-        const messageResponse = {
-            message: `Product ${req.body_id} Updated!`
-        };
-    } catch (err) {
-        console.log("Error while updating :" + p_id + " " + err);
+        console.log("Error while updating : " + err);
     }
 });

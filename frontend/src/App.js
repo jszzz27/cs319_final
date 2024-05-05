@@ -40,6 +40,12 @@ function App() {
     // review: { username: "", comment: "", rating: "" },
   });
 
+  const [updateBeerMacro, setUpdateBeerMacro] = useState({
+    Cal: "",
+    Carb: "",
+    Alc: "",
+  })
+
   const [addNewRating, setAddNewRating] = useState(0);
 
   const [filter, setFilter] = useState('');
@@ -93,7 +99,7 @@ function App() {
 
   useEffect(() => {
     getAllBeerProducts();
-  }, []);
+  }, [checked4]);
 
   useEffect(() => {
     getAllWaterProducts();
@@ -108,10 +114,35 @@ function App() {
   }, []);
 
   const [isSearchView, setIsSearchView] = useState(false);
+  const [isUpdateView, setIsUpdateView] = useState(false);
 
   const handleButtonClick = () => {
     setIsSearchView(false);
   };
+
+  const handleGoBack = () => {
+    setSelectedProduct(null);
+    setIsItemSelected(false);
+    setIsSearchView(false);
+    setIsUpdateView(false);
+  };
+
+  // const [addNewBeerCal, setAddNewBeerCal] = useState(0);
+
+  // function handleUpdateBeerChange(evt) {
+  //   setAddNewBeerCal(evt.target.value);
+  // }
+
+  function handleUpdateBeerChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "updated_Cal") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Cal: value });
+    } else if (evt.target.name === "updated_Carb") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Carb: value });
+    } else if (evt.target.name === "updated_Alc") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Alc: value });
+    }
+  }
 
   function getAllBeerProducts() {
     fetch("http://localhost:4000/beer")
@@ -121,6 +152,7 @@ function App() {
       console.log(data);
       setBeer(data);
     });
+    setViewer1(!viewer1);
   }
 
   function getAllWaterProducts() {
@@ -195,24 +227,6 @@ function App() {
     }
   }
 
-  function handleChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "username") {
-      setAddNewRating({ ...addNewRating, username: value });
-    } else if (evt.target.name === "productName") {
-      setAddNewRating({ ...addNewRating, productName: value });
-    } else if (evt.target.name === "comment") {
-      setAddNewRating({ ...addNewRating, comment: value });
-    } else if (evt.target.name === "rating") {
-      console.log(value);
-      setAddNewRating({ ...addNewRating, rating: value });
-    }
-  }
-
-  function handleUpdateChange(evt) {
-    setAddNewRating(evt.target.value);
-  }
-
   function handleOnSubmitBeer(e) {
     e.preventDefault();
     console.log(e.target.value);
@@ -233,42 +247,6 @@ function App() {
       });
   }
 
-  function getOneByOneProductNext() {
-    if (product.length > 0) {
-      if (index === product.length - 1) setIndex(0);
-      else setIndex(index + 1);
-      if (product.length > 0) setChecked4(true);
-      else setChecked4(false);
-    }
-  }
-
-  function getOneByOneProductPrev() {
-    if (product.length > 0) {
-      if (index === 0) setIndex(product.length - 1);
-      else setIndex(index - 1);
-      if (product.length > 0) setChecked4(true);
-      else setChecked4(false);
-    }
-  }
-
-  function getOneByOneProductNextU() {
-    if (product.length > 0) {
-      if (index2 === product.length - 1) setIndex2(0);
-      else setIndex2(index2 + 1);
-      if (product.length > 0) setChecked5(true);
-      else setChecked5(false);
-    }
-  }
-
-  function getOneByOneProductPrevU() {
-    if (product.length > 0) {
-      if (index2 === 0) setIndex2(product.length - 1);
-      else setIndex2(index2 - 1);
-      if (product.length > 0) setChecked5(true);
-      else setChecked5(false);
-    }
-  }
-
   function deleteOneBeer(deleteid) {
     console.log("Product to delete :", deleteid);
     fetch("http://localhost:4000/beer/delete/", {
@@ -285,17 +263,15 @@ function App() {
           alert(value);
         }
       });
-    // setChecked4(!checked4);
+    setChecked4(!checked4);
     window.location.reload();
   }
 
-  function updateOneProduct(updateid, new_price) {
-    console.log("Product to update :", updateid);
-    console.log("Value to update :", new_price);
-    fetch("http://localhost:4000/update/", {
+  function updateOneBeer(updateid, new_Cal, new_Carb, new_Alc ) {
+    fetch("http://localhost:4000/beer/update/", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ _id: updateid, price: new_price }),
+      body: JSON.stringify({ beerID: updateid, Cal: new_Cal, Carb: new_Carb, Alc: new_Alc }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -311,67 +287,6 @@ function App() {
     window.location.reload();
   }
 
-  const showAllWater = filteredWater.map((el) => (
-    <div key={el.beerID} className='col-3 px-2'>
-      <div className='card border border-dark' style={{ width: `25rem` }}>
-        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
-        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-        </div>
-      </div>
-    </div>
-  ));
-
-  const showAllBeer = filteredBeer.map((el) => (
-    <div key={el.beerID} className='col-3 px-2'>
-      <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
-        onClick={() => setSelectedProduct(el)}>
-        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
-        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-        </div>
-      </div>
-    </div>
-  ));
-
-  const showSelectedProduct = () => {
-    if (selectedProduct) {
-      return (
-        <div className='selected-product'>
-          <div className='selected-product-img'>
-            <img src={selectedProduct.url} alt={selectedProduct.title} />
-          </div>
-          <div className='selected-product-details'>
-            <h2>{selectedProduct.title}</h2>
-            <p>{selectedProduct.description}</p>
-            <button onClick={() => handleGoBack()}>Go Back</button>
-          </div>
-          <div className="reviews">
-            <h3>Reviews</h3>
-            <ul>
-              {reviews.map((review, index) => (
-                <li key={index}>
-                  <p>Username: {review.username}</p>
-                  <p>Comment: {review.comment}</p>
-                  <p>Rating: {review.rating}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  const handleGoBack = () => {
-    setSelectedProduct(null);
-    setIsItemSelected(false);
-    setIsSearchView(false);
-  };
-
   return (
     <div style={{ minHeight: `100vh` }}>
       <div style={{ textAlign: 'center' }}>
@@ -380,11 +295,11 @@ function App() {
           <div className="container-fluid">
             <div className="collapse navbar-collapse justify-content-center">
               <div className="btn-group-lg" role="group">
-                <button className="btn btn-danger" aria-current="page" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(1)}>Main</button>
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(2)}>Beer</button>
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(3)}>Water</button>
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(4)}>Soda</button>
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => setMenu(5)}>Juice</button>
+                <button className="btn btn-danger" aria-current="page" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => { setMenu(1); handleGoBack(); }}>Main</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => { setMenu(2); handleGoBack(); }}>Beer</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(3); handleGoBack(); }}>Water</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(4); handleGoBack(); }}>Soda</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(5); handleGoBack(); }}>Juice</button>
               </div>
             </div>
           </div>
@@ -467,10 +382,10 @@ function App() {
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           backgroundBlendMode: 'overlay'
         }}>
-          {!isItemSelected && !isSearchView && <h1 className='text-center text-danger'>Beer</h1>}
-          {!isItemSelected && !isSearchView && (
+          {!isItemSelected && !isSearchView && !isUpdateView && <h1 className='text-center text-danger'>Beer</h1>}
+          {!isItemSelected && !isSearchView && !isUpdateView && (
           <div>
-            <div className="search-container text-center">
+            <div className="search-container text-center d-flex justify-content-center align-items-center">
               <form action="/action_page.php">
                 <input
                   type="text"
@@ -478,8 +393,8 @@ function App() {
                   name="search"
                   onChange={(e) => setFilter(e.target.value)}
                 />
-                <button onClick={() => {handleButtonClick(); setIsSearchView(true)}}>Switch View</button>
               </form>
+              <button onClick={() => {handleButtonClick(); setIsSearchView(true)}} className="btn btn-danger ml-2" style={{ borderRadius: '0.5rem', marginLeft: '4rem' }}>Add a New Beer</button>
             </div>
             <hr />
             <div className='row row-cols-auto'>
@@ -493,7 +408,6 @@ function App() {
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                       <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-                      <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
                     </div>
                   </div>
                 </div>
@@ -504,7 +418,6 @@ function App() {
           {isSearchView && (
             <div>
               <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Beer</h1>
-              <button onClick={() => handleGoBack()}>Go Back</button>
               <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Beer ID</label>
@@ -552,7 +465,39 @@ function App() {
                   <button type="submit" onClick={handleOnSubmitBeer} className="btn btn-danger col-auto">Submit</button>
                 </div>
               </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
             </div>
+          )}
+          {isUpdateView && ( 
+          <div>
+            <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Update Beer Macro Information</h1>
+            <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Calory (cal)</label>
+                <div className="col-sm-10">
+                  <input type="number" className="form-control form-control-lg" name="updated_Cal" value={updateBeerMacro.Cal} onChange={handleUpdateBeerChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Carbohydrates (g)</label>
+                <div className="col-sm-10">
+                  <input type="number" className="form-control form-control-lg" name="updated_Carb" value={updateBeerMacro.Carb} onChange={handleUpdateBeerChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Alcohol (%)</label>
+                <div className="col-sm-10">
+                  <input type="number" className="form-control form-control-lg" name="updated_Alc" value={updateBeerMacro.Alc} onChange={handleUpdateBeerChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <button type="submit" onClick={() => updateOneBeer(selectedProduct.beerID, updateBeerMacro.Cal, updateBeerMacro.Carb, updateBeerMacro.Alc)} className="btn btn-danger col-auto">Update</button>
+              </div>
+            </form>
+            {/* <input style={{maxWidth: `50%`}} type="number" placeholder="New Price" name="updated_Cal" value={addNewBeerCal} onChange={handleUpdateBeerChange} />
+            <button className='btn btn-danger m-2' onClick={() => updateOneBeer(selectedProduct.beerID, addNewBeerCal)}>Update Price</button> */}
+            <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+          </div>
           )}
           {isItemSelected && (
             <div>
@@ -563,7 +508,12 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
+                  <p>{selectedProduct.Cal}</p>
+                  <p>{selectedProduct.Carb}</p>
+                  <p>{selectedProduct.Alc}</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
+                  <button onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
+                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <div className="reviews">

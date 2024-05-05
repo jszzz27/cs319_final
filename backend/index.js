@@ -180,26 +180,106 @@ app.post("/juice/:juiceID/review", async (req, res) => {
 
 app.post("/beer/create", async (req, res) => {
     console.log(req.body);
-    const p_id = req.body._id;
+    const pbeerID = req.body.beerID;
     const ptitle = req.body.title;
-    const pprice = req.body.price;
+    const purl = req.body.url;
     const pdescription = req.body.description;
-    const pcategory = req.body.category;
-    const pimage = req.body.image;
-    const prate = req.body.rating.rate;
-    const pcount = req.body.rating.count;
-    const formData = new Product({
-        _id: p_id,
+    const pmacro_img = req.body.macro_img;
+    const pusername = req.body.username;
+    const pcomment = req.body.comment;
+    const prating = req.body.rating;
+    const formData = new Beer({
+        beerID: pbeerID,
         title: ptitle,
-        price: pprice,
+        url: purl,
         description: pdescription,
-        category: pcategory,
-        image: pimage,
-        rating: { rate: prate, count: pcount },
+        macro_img: pmacro_img,
+        review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
-        await Product.create(formData);
-        const messageResponse = { message: `Product ${p_id} Added!` };
+        await Beer.create(formData);
+        const messageResponse = { message: `Product ${ptitle} Added!` };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while adding a new product:" + err);
+    }
+});
+
+app.post("/water/create", async (req, res) => {
+    console.log(req.body);
+    const pwaterID = req.body.waterID;
+    const ptitle = req.body.title;
+    const purl = req.body.url;
+    const pdescription = req.body.description;
+    const pmacro_img = req.body.macro_img;
+    const pusername = req.body.username;
+    const pcomment = req.body.comment;
+    const prating = req.body.rating;
+    const formData = new Water({
+        waterID: pwaterID,
+        title: ptitle,
+        url: purl,
+        description: pdescription,
+        macro_img: pmacro_img,
+        review: [{ username: pusername, comment: pcomment, rating: prating }],
+    });
+    try {
+        await Water.create(formData);
+        const messageResponse = { message: `Product ${ptitle} Added!` };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while adding a new product:" + err);
+    }
+});
+
+app.post("/soda/create", async (req, res) => {
+    console.log(req.body);
+    const psodaID = req.body.sodaID;
+    const ptitle = req.body.title;
+    const purl = req.body.url;
+    const pdescription = req.body.description;
+    const pmacro_img = req.body.macro_img;
+    const pusername = req.body.username;
+    const pcomment = req.body.comment;
+    const prating = req.body.rating;
+    const formData = new Soda({
+        sodaID: psodaID,
+        title: ptitle,
+        url: purl,
+        description: pdescription,
+        macro_img: pmacro_img,
+        review: [{ username: pusername, comment: pcomment, rating: prating }],
+    });
+    try {
+        await Soda.create(formData);
+        const messageResponse = { message: `Product ${ptitle} Added!` };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while adding a new product:" + err);
+    }
+});
+
+app.post("/juice/create", async (req, res) => {
+    console.log(req.body);
+    const pjuiceID = req.body.juiceID;
+    const ptitle = req.body.title;
+    const purl = req.body.url;
+    const pdescription = req.body.description;
+    const pmacro_img = req.body.macro_img;
+    const pusername = req.body.username;
+    const pcomment = req.body.comment;
+    const prating = req.body.rating;
+    const formData = new Juice({
+        juiceID: pjuiceID,
+        title: ptitle,
+        url: purl,
+        description: pdescription,
+        macro_img: pmacro_img,
+        review: [{ username: pusername, comment: pcomment, rating: prating }],
+    });
+    try {
+        await Juice.create(formData);
+        const messageResponse = { message: `Product ${ptitle} Added!` };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
         console.log("Error while adding a new product:" + err);
@@ -208,22 +288,17 @@ app.post("/beer/create", async (req, res) => {
 
 //----------------------------------------------------------------------
 
-app.delete("/delete/beer/:bearID", async (req, res) => {
-    const beerID = req.params.beerID;
-    const query = { beerID : beerID };
-
+app.delete("/beer/delete", async (req, res) => {
+    console.log("Delete :", req.body);
     try {
-        const oneProduct = await Beer.deleteOne(query);
-
-        if (!oneProduct) {
-            return res.status(404).json({ message: "Beer not found" });
-        }
-
-        res.send(oneProduct);
-        res.status(201).json({ message: "Review added successfully" });
-    } catch (error) {
-        console.error("Error while deleting a beer product:", error);
-        res.status(500).json({ error: "Internal server error" });
+        const query = { beerID: req.body.beerID };
+        await Beer.deleteOne(query);
+        const messageResponse = {
+            message: `Product ${req.body._id} Deleted!`,
+        };
+        res.send(JSON.stringify(messageResponse));
+    } catch (err) {
+        console.log("Error while deleting :" + pbeerID + " " + err);
     }
 });
 
@@ -239,6 +314,22 @@ app.put("/update", async (req, res) => {
         await Review.updateOne(filter, updateDoc, null);
         const messageResponse = {
             message: `Review ${req.body_id} Updated!`
+        };
+    } catch (err) {
+        console.log("Error while updating :" + p_id + " " + err);
+    }
+});
+
+app.put("/update", async (req, res) => {
+    console.log("Update :", req.body._id);
+    console.log("New Price :", req.body.price);
+
+    try{
+        const filter = { _id: `${req.body._id}` };
+        const updateDoc = { $set: { price: `${req.body.price}`} };
+        await Product.updateOne(filter, updateDoc, null);
+        const messageResponse = {
+            message: `Product ${req.body_id} Updated!`
         };
     } catch (err) {
         console.log("Error while updating :" + p_id + " " + err);

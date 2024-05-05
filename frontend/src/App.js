@@ -1009,7 +1009,7 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.Cal} Cal</p>
+                  <p>Calories: {selectedProduct.Cal}</p>
                   <p>Carbs: {selectedProduct.Carb} g</p>
                   <p>Alcohol %: {selectedProduct.Alc} %</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>

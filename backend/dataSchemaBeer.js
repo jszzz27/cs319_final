@@ -5,10 +5,11 @@ const ReactFormDataSchemaBeer = new mongoose.Schema({
     title: { type: String },
     url: { type: String },
     description: { type: String },
-    macro_img: { type: String },
+    Cal: { type: Number },
+    Carb: { type: Number },
+    Alc: { type: Number },
     review: [{
-        id: { type: Number },
-        username: { type: String},
+        username: { type: String },
         comment: { type: String },
         rating: { type: Number }
     }]

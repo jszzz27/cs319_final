@@ -184,17 +184,22 @@ app.post("/beer/create", async (req, res) => {
     const ptitle = req.body.title;
     const purl = req.body.url;
     const pdescription = req.body.description;
-    const pmacro_img = req.body.macro_img;
-    const pusername = req.body.username;
-    const pcomment = req.body.comment;
-    const prating = req.body.rating;
+    const pCal = req.body.Cal;
+    const pCarb = req.body.Carb;
+    const pAlc = req.body.Alc;
+    // const pusername = req.body.username;
+    // const pcomment = req.body.comment;
+    // const prating = req.body.rating;
     const formData = new Beer({
         beerID: pbeerID,
         title: ptitle,
         url: purl,
         description: pdescription,
-        macro_img: pmacro_img,
-        review: [{ username: pusername, comment: pcomment, rating: prating }],
+        Cal: pCal,
+        Carb: pCarb,
+        Alc: pAlc,
+        Review : [],
+        // review: [{ username: pusername, comment: pcomment, rating: prating }],
     });
     try {
         await Beer.create(formData);

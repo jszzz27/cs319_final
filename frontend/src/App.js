@@ -29,13 +29,15 @@ function App() {
     rating: 0.0,
   });
 
-  const [addNewProduct, setAddNewProduct] = useState({
+  const [addNewBeer, setAddNewBeer] = useState({
     beerID: "",
     title: "",
     url: "",
     description: "",
-    macro_img: "",
-    review: { username: "", comment: "", rating: "" },
+    Cal: "",
+    Carb: "",
+    Alc: "",
+    // review: { username: "", comment: "", rating: "" },
   });
 
   const [addNewRating, setAddNewRating] = useState(0);
@@ -105,7 +107,7 @@ function App() {
     getAllJuiceProducts();
   }, []);
 
-  const [isSearchView, setIsSearchView] = useState(true);
+  const [isSearchView, setIsSearchView] = useState(false);
 
   const handleButtonClick = () => {
     setIsSearchView(false);
@@ -174,6 +176,25 @@ function App() {
     }
   }
 
+  function handleBeerChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "beerID") {
+      setAddNewBeer({ ...addNewBeer, beerID: value });
+    } else if (evt.target.name === "title") {
+      setAddNewBeer({ ...addNewBeer, title: value });
+    } else if (evt.target.name === "url") {
+      setAddNewBeer({ ...addNewBeer, url: value });
+    } else if (evt.target.name === "description") {
+      setAddNewBeer({ ...addNewBeer, description: value });
+    } else if (evt.target.name === "Cal") {
+      setAddNewBeer({ ...addNewBeer, Cal: value });
+    } else if (evt.target.name === "Carb") {
+      setAddNewBeer({ ...addNewBeer, Carb: value });
+    } else if (evt.target.name === "Alc") {
+      setAddNewBeer({ ...addNewBeer, Alc: value });
+    }
+  }
+
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "username") {
@@ -192,13 +213,13 @@ function App() {
     setAddNewRating(evt.target.value);
   }
 
-  function handleOnSubmit(e) {
+  function handleOnSubmitBeer(e) {
     e.preventDefault();
     console.log(e.target.value);
     fetch("http://localhost:4000/beer/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addNewProduct),
+      body: JSON.stringify(addNewBeer),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -457,7 +478,7 @@ function App() {
                   name="search"
                   onChange={(e) => setFilter(e.target.value)}
                 />
-                <button onClick={handleButtonClick}>Switch View</button>
+                <button onClick={() => {handleButtonClick(); setIsSearchView(true)}}>Switch View</button>
               </form>
             </div>
             <hr />
@@ -482,59 +503,53 @@ function App() {
           )}
           {isSearchView && (
             <div>
-              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Product</h1>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Beer</h1>
               <button onClick={() => handleGoBack()}>Go Back</button>
               <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
                 <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Product ID</label>
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Beer ID</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" placeholder="ID" name="_id" value={addNewProduct._id} onChange={handleChange} />
+                    <input type="number" className="form-control form-control-lg" name="beerID" value={addNewBeer.beerID} onChange={handleBeerChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Name</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="title" value={addNewProduct.title} onChange={handleChange} />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Price</label>
-                  <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="price" value={addNewProduct.price} onChange={handleChange} />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Category</label>
-                  <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="category" value={addNewProduct.category} onChange={handleChange} />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Description</label>
-                  <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="description" value={addNewProduct.description} onChange={handleChange} />
+                    <input type="text" className="form-control form-control-lg" name="title" value={addNewBeer.title} onChange={handleBeerChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Image URL</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="image" value={addNewProduct.image} onChange={handleChange} />
+                    <input type="text" className="form-control form-control-lg" name="url" value={addNewBeer.url} onChange={handleBeerChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Rating</label>
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Description</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} />
+                    <input type="text" className="form-control form-control-lg" name="description" value={addNewBeer.description} onChange={handleBeerChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <label className="col-sm-2 col-form-label col-form-label-lg">Count</label>
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Calories (cal)</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="count" value={addNewProduct.rating.count} onChange={handleChange} />
+                    <input type="number" className="form-control form-control-lg" name="Cal" value={addNewBeer.Cal} onChange={handleBeerChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <button type="submit" onClick={handleOnSubmit} className="btn btn-danger col-auto">Submit</button>
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Carbohydrates (g)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="Carb" value={addNewBeer.Carb} onChange={handleBeerChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Alcohol (%)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="Alc" value={addNewBeer.Alc} onChange={handleBeerChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={handleOnSubmitBeer} className="btn btn-danger col-auto">Submit</button>
                 </div>
               </form>
             </div>

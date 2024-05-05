@@ -76,11 +76,7 @@ function App() {
 
   useEffect(() => {
     getAllBeerProducts();
-  }, [filter]);
-
-  useEffect(() => {
-    getAllBeerProducts();
-  }, [checked4]);
+  }, [filter, checked4]);
 
   useEffect(() => {
     getAllWaterProducts();
@@ -112,16 +108,7 @@ function App() {
     setIsAddReviewView(false);
   };
 
-  function handleUpdateBeerChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "updated_Cal") {
-      setUpdateBeerMacro({ ...updateBeerMacro, Cal: value });
-    } else if (evt.target.name === "updated_Carb") {
-      setUpdateBeerMacro({ ...updateBeerMacro, Carb: value });
-    } else if (evt.target.name === "updated_Alc") {
-      setUpdateBeerMacro({ ...updateBeerMacro, Alc: value });
-    }
-  }
+  //------------------------------------------------
 
   function getAllBeerProducts() {
     fetch("http://localhost:4000/beer")
@@ -132,35 +119,6 @@ function App() {
       setBeer(data);
     });
     setViewer1(!viewer1);
-  }
-
-  function getAllBeerReviews(id) {
-    console.log(id);
-    if (id >= 1) {
-      fetch("http://localhost:4000/beer/review/" + id)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Show one product :", id);
-          console.log(data);
-          setBeerReview(data);
-        })
-        .catch((err) => {
-          console.log("Wrong number of Product id.");
-        })
-    } else {
-      console.log("Wrong number of Product id.");
-    }
-  }
-
-  function handleBeerReviewChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "username") {
-      setAddNewReview({ ...addNewReview, username: value });
-    } else if (evt.target.name === "comment") {
-      setAddNewReview({ ...addNewReview, comment: value });
-    } else if (evt.target.name === "rating") {
-      setAddNewReview({ ...addNewReview, rating: value });
-    }
   }
 
   function handleBeerChange(evt) {
@@ -180,24 +138,6 @@ function App() {
     } else if (evt.target.name === "Alc") {
       setAddNewBeer({ ...addNewBeer, Alc: value });
     }
-  }
-
-  function handleOnSubmitBeerReview(id) {
-    fetch("http://localhost:4000/beer/review/" + id, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addNewReview),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Post a new beer completed");
-        console.log(data);
-        if (data) {
-          const value = Object.values(data);
-          alert(value);
-          window.location.reload();
-        }
-      });
   }
 
   function handleOnSubmitBeer(e) {
@@ -240,6 +180,17 @@ function App() {
     window.location.reload();
   }
 
+  function handleUpdateBeerChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "updated_Cal") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Cal: value });
+    } else if (evt.target.name === "updated_Carb") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Carb: value });
+    } else if (evt.target.name === "updated_Alc") {
+      setUpdateBeerMacro({ ...updateBeerMacro, Alc: value });
+    }
+  }
+
   function updateOneBeer(updateid, new_Cal, new_Carb, new_Alc ) {
     fetch("http://localhost:4000/beer/update/", {
       method: "PUT",
@@ -259,6 +210,55 @@ function App() {
     setChecked5(!checked5);
     window.location.reload();
   }
+
+  function getAllBeerReviews(id) {
+    console.log(id);
+    if (id >= 1) {
+      fetch("http://localhost:4000/beer/review/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          setBeerReview(data);
+        })
+        .catch((err) => {
+          console.log("Wrong number of Product id.");
+        })
+    } else {
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleBeerReviewChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "username") {
+      setAddNewReview({ ...addNewReview, username: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewReview({ ...addNewReview, comment: value });
+    } else if (evt.target.name === "rating") {
+      setAddNewReview({ ...addNewReview, rating: value });
+    }
+  }
+
+  function handleOnSubmitBeerReview(id) {
+    fetch("http://localhost:4000/beer/review/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewReview),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new beer completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
+  }
+
+  //-----------------------------------------------------------------
 
   function getAllWaterProducts() {
     fetch("http://localhost:4000/water")

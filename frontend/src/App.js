@@ -233,12 +233,12 @@ function App() {
     }
   }
 
-  function deleteOneProduct(deleteid) {
+  function deleteOneBeer(deleteid) {
     console.log("Product to delete :", deleteid);
-    fetch("http://localhost:4000/delete/", {
+    fetch("http://localhost:4000/beer/delete/", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ _id: deleteid }),
+      body: JSON.stringify({ beerID: deleteid }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -249,7 +249,7 @@ function App() {
           alert(value);
         }
       });
-    setChecked4(!checked4);
+    // setChecked4(!checked4);
     window.location.reload();
   }
 

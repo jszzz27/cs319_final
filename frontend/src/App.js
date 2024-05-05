@@ -1009,9 +1009,9 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>{selectedProduct.Cal}</p>
-                  <p>{selectedProduct.Carb}</p>
-                  <p>{selectedProduct.Alc}</p>
+                  <p>Calories: {selectedProduct.Cal} Cal</p>
+                  <p>Carbs: {selectedProduct.Carb} g</p>
+                  <p>Alcohol %: {selectedProduct.Alc} %</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>

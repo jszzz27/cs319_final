@@ -1012,9 +1012,9 @@ function App() {
                   <p>Calories: {selectedProduct.Cal}</p>
                   <p>Carbs: {selectedProduct.Carb} g</p>
                   <p>Alcohol %: {selectedProduct.Alc} %</p>
-                  <button className="btn btn-danger" onClick={() => handleGoBack()}>Go Back</button>
-                  <button className="btn btn-danger" onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
-                  <button className="btn btn-danger" onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>
@@ -1178,9 +1178,9 @@ function App() {
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
                   <p>Sources: {selectedProduct.bottled}</p>
-                  <button className="btn btn-danger" onClick={() => handleGoBack()}>Go Back</button>
-                  <button className="btn btn-danger" onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
-                  <button className="btn btn-danger" onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
                 </div>
               </div>
               <hr></hr>
@@ -1369,9 +1369,9 @@ function App() {
                   <p>Calories: {selectedProduct.Cal}</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
                   <p>Caffine: {selectedProduct.Caf} mg</p>
-                  <button className="btn btn-danger" onClick={() => handleGoBack()}>Go Back</button>
-                  <button className="btn btn-danger" onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
-                  <button className="btn btn-danger" onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>
@@ -1548,9 +1548,9 @@ function App() {
                   <p>{selectedProduct.description}</p>
                   <p>Calories: {selectedProduct.Cal}</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
-                  <button className="btn btn-danger" onClick={() => handleGoBack()}>Go Back</button>
-                  <button className="btn btn-danger" onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
-                  <button className="btn btn-danger" onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => handleGoBack()}>Go Back</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
+                  <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `5px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
               <hr></hr>

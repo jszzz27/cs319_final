@@ -17,6 +17,9 @@ function App() {
   const [filteredSoda, setFilteredSoda] = useState([]);
   const [filteredJuice, setFilteredJuice] = useState([]);
   const [beerReview, setBeerReview] = useState([]);
+  const [waterReview, setWaterReview] = useState([]);
+  const [sodaReview, setSodaReview] = useState([]);
+  const [juiceReview, setJuiceReview] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isItemSelected, setIsItemSelected] = useState(false);
   const [isSearchView, setIsSearchView] = useState(false);

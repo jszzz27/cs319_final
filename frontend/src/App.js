@@ -125,15 +125,15 @@ function App() {
 
   useEffect(() => {
     getAllWaterProducts();
-  }, []);
+  }, [filter]);
 
   useEffect(() => {
     getAllSodaProducts();
-  }, []);
+  }, [filter]);
 
   useEffect(() => {
     getAllJuiceProducts();
-  }, []);
+  }, [filter]);
 
   useEffect(() => {
     if (selectedProduct !== null) {

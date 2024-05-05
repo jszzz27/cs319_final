@@ -1177,7 +1177,7 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>{selectedProduct.bottled}</p>
+                  <p>Sources: {selectedProduct.bottled}</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneWater(selectedProduct.waterID)}>Delete</button>
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Water Source</button>
@@ -1366,9 +1366,9 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>{selectedProduct.Cal}</p>
-                  <p>{selectedProduct.Sug}</p>
-                  <p>{selectedProduct.Caf}</p>
+                  <p>Calories: {selectedProduct.Cal}</p>
+                  <p>Sugar: {selectedProduct.Sug} g</p>
+                  <p>Caffine: {selectedProduct.Caf} mg</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
@@ -1546,8 +1546,8 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>{selectedProduct.cal}</p>
-                  <p>{selectedProduct.Sug}</p>
+                  <p>Calories: {selectedProduct.cal}</p>
+                  <p>Sugar: {selectedProduct.Sug} g</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>

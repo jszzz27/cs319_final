@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const ReactFormDataSchemaWater = new mongoose.Schema({
-    _id: { type: Number },
     waterID: { type: Number},
     title: { type: String },
     url: { type: String },

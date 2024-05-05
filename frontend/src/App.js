@@ -125,15 +125,15 @@ function App() {
 
   useEffect(() => {
     getAllWaterProducts();
-  }, [filter]);
+  }, []);
 
   useEffect(() => {
     getAllSodaProducts();
-  }, [filter]);
+  }, []);
 
   useEffect(() => {
     getAllJuiceProducts();
-  }, [filter]);
+  }, []);
 
   useEffect(() => {
     if (selectedProduct !== null) {
@@ -292,7 +292,7 @@ function App() {
     }
   }
 
-  function handleBeerReviewChange(evt) {
+  function handleReviewChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "username") {
       setAddNewReview({ ...addNewReview, username: value });
@@ -431,17 +431,6 @@ function App() {
         })
     } else {
       console.log("Wrong number of Product id.");
-    }
-  }
-
-  function handleWaterReviewChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "username") {
-      setAddNewReview({ ...addNewReview, username: value });
-    } else if (evt.target.name === "comment") {
-      setAddNewReview({ ...addNewReview, comment: value });
-    } else if (evt.target.name === "rating") {
-      setAddNewReview({ ...addNewReview, rating: value });
     }
   }
 
@@ -584,17 +573,6 @@ function App() {
     }
   }
 
-  function handleSodaReviewChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "username") {
-      setAddNewReview({ ...addNewReview, username: value });
-    } else if (evt.target.name === "comment") {
-      setAddNewReview({ ...addNewReview, comment: value });
-    } else if (evt.target.name === "rating") {
-      setAddNewReview({ ...addNewReview, rating: value });
-    }
-  }
-
   function handleOnSubmitSodaReview(id) {
     fetch("http://localhost:4000/soda/review/" + id, {
       method: "POST",
@@ -727,17 +705,6 @@ function App() {
         })
     } else {
       console.log("Wrong number of Product id.");
-    }
-  }
-
-  function handleJuiceReviewChange(evt) {
-    const value = evt.target.value;
-    if (evt.target.name === "username") {
-      setAddNewReview({ ...addNewReview, username: value });
-    } else if (evt.target.name === "comment") {
-      setAddNewReview({ ...addNewReview, comment: value });
-    } else if (evt.target.name === "rating") {
-      setAddNewReview({ ...addNewReview, rating: value });
     }
   }
 
@@ -978,19 +945,19 @@ function App() {
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleBeerReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleBeerReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleBeerReviewChange} />
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
@@ -1146,19 +1113,19 @@ function App() {
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleWaterReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleWaterReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleWaterReviewChange} />
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
@@ -1335,19 +1302,19 @@ function App() {
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleSodaReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleSodaReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleSodaReviewChange} />
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
@@ -1515,19 +1482,19 @@ function App() {
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleJuiceReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
                   <div className="col-sm-10">
-                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleJuiceReviewChange} />
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
                   <div className="col-sm-10">
-                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleJuiceReviewChange} />
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleReviewChange} />
                   </div>
                 </div>
                 <div className="row mb-3">

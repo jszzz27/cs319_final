@@ -726,6 +726,20 @@ function App() {
       });
   }
 
+  function starRating(rating) {
+    if (rating >= 0 && rating <= 1.5) {
+      return "⭐️";
+    } else if (rating >= 1.6 && rating <= 2.5) {
+      return "⭐️⭐️";
+    } else if (rating >= 2.6 && rating <= 3.5) {
+      return "⭐️⭐️⭐️";
+    } else if(rating >= 3.6 && rating <= 4.5) {
+      return "⭐️⭐️⭐️⭐️";
+    } else if(rating >= 4.6 && rating <= 5.0) {
+      return "⭐️⭐️⭐️⭐️⭐️";
+    }
+  }
+
   //------------------------------------------------
 
   return (
@@ -848,7 +862,7 @@ function App() {
                   }}>
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Name:</span> {el.title}</p>
                     </div>
                   </div>
                 </div>
@@ -903,7 +917,7 @@ function App() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <button type="submit" onClick={handleOnSubmitBeer} className="btn btn-danger col-auto">Submit</button>
+                  <button type="submit" onClick={handleOnSubmitBeer} className="btn btn-danger col-auto">Add</button>
                 </div>
               </form>
               <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
@@ -976,9 +990,9 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.Cal}</p>
+                  <p>Calories: {selectedProduct.Cal} cal</p>
                   <p>Carbs: {selectedProduct.Carb} g</p>
-                  <p>Alcohol %: {selectedProduct.Alc} %</p>
+                  <p>Alcohol: {selectedProduct.Alc} %</p>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneBeer(selectedProduct.beerID)}>Delete</button>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
@@ -995,7 +1009,7 @@ function App() {
                         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                           <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
                           <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
-                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {starRating(el.rating)}</p>
                         </div>
                       </div>
                     </div>
@@ -1040,7 +1054,7 @@ function App() {
                   }}>
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Name:</span> {el.title}</p>
                     </div>
                   </div>
                 </div>
@@ -1083,7 +1097,7 @@ function App() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <button type="submit" onClick={handleOnSubmitWater} className="btn btn-danger col-auto">Submit</button>
+                  <button type="submit" onClick={handleOnSubmitWater} className="btn btn-danger col-auto">Add</button>
                 </div>
               </form>
               <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
@@ -1161,7 +1175,7 @@ function App() {
                         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                           <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
                           <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
-                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {starRating(el.rating)}</p>
                         </div>
                       </div>
                     </div>
@@ -1205,7 +1219,7 @@ function App() {
                   }}>
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Name:</span> {el.title}</p>
                     </div>
                   </div>
                 </div>
@@ -1260,7 +1274,7 @@ function App() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <button type="submit" onClick={handleOnSubmitSoda} className="btn btn-danger col-auto">Submit</button>
+                  <button type="submit" onClick={handleOnSubmitSoda} className="btn btn-danger col-auto">Add</button>
                 </div>
               </form>
               <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
@@ -1333,7 +1347,7 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.Cal}</p>
+                  <p>Calories: {selectedProduct.Cal} cal</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
                   <p>Caffine: {selectedProduct.Caf} mg</p>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
@@ -1352,7 +1366,7 @@ function App() {
                         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                           <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
                           <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
-                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {starRating(el.rating)}</p>
                         </div>
                       </div>
                     </div>
@@ -1397,7 +1411,7 @@ function App() {
                   }}>
                     <img src={el.url} width={20} alt={el.title} className='card-img-top' />
                     <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Name:</span> {el.title}</p>
                     </div>
                   </div>
                 </div>
@@ -1446,7 +1460,7 @@ function App() {
                   </div>
                 </div>
                 <div className="row mb-3">
-                  <button type="submit" onClick={handleOnSubmitJuice} className="btn btn-danger col-auto">Submit</button>
+                  <button type="submit" onClick={handleOnSubmitJuice} className="btn btn-danger col-auto">Add</button>
                 </div>
               </form>
               <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
@@ -1513,7 +1527,7 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.Cal}</p>
+                  <p>Calories: {selectedProduct.Cal} cal</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => handleGoBack()}>Go Back</button>
                   <button className="btn btn-danger" style={{ marginLeft: `5px`, marginRight: `15px` }} onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
@@ -1531,7 +1545,7 @@ function App() {
                         <div className='card-body border border-dark' style={{ background: `lightgray` }}>
                           <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
                           <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
-                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {starRating(el.rating)}</p>
                         </div>
                       </div>
                     </div>

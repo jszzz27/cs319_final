@@ -24,9 +24,8 @@ function App() {
 
   const [addNewReview, setAddNewReview] = useState({
     username: "",
-    productName: "",
     comment: "",
-    rating: 0.0,
+    rating: "",
   });
 
   const [addNewBeer, setAddNewBeer] = useState({
@@ -37,7 +36,6 @@ function App() {
     Cal: "",
     Carb: "",
     Alc: "",
-    // review: { username: "", comment: "", rating: "" },
   });
 
   const [updateBeerMacro, setUpdateBeerMacro] = useState({
@@ -54,16 +52,12 @@ function App() {
   const [filteredSoda, setFilteredSoda] = useState([]);
   const [filteredJuice, setFilteredJuice] = useState([]);
 
+  const [beerReview, setBeerReview] = useState([]);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isItemSelected, setIsItemSelected] = useState(false);
 
   const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    if (isItemSelected && selectedProduct) {
-      getAllReviewsByName(selectedProduct.productName);
-    }
-  }, [isItemSelected, selectedProduct]);
 
   useEffect(() => {
     const filtered = beer.filter(item =>
@@ -113,8 +107,15 @@ function App() {
     getAllJuiceProducts();
   }, []);
 
+  useEffect(() => {
+    if (selectedProduct !== null) {
+      getAllBeerReviews(selectedProduct.beerID);
+    }
+  }, [selectedProduct]);
+
   const [isSearchView, setIsSearchView] = useState(false);
   const [isUpdateView, setIsUpdateView] = useState(false);
+  const [isAddReviewView, setIsAddReviewView] = useState(false);
 
   const handleButtonClick = () => {
     setIsSearchView(false);
@@ -125,13 +126,8 @@ function App() {
     setIsItemSelected(false);
     setIsSearchView(false);
     setIsUpdateView(false);
+    setIsAddReviewView(false);
   };
-
-  // const [addNewBeerCal, setAddNewBeerCal] = useState(0);
-
-  // function handleUpdateBeerChange(evt) {
-  //   setAddNewBeerCal(evt.target.value);
-  // }
 
   function handleUpdateBeerChange(evt) {
     const value = evt.target.value;
@@ -185,26 +181,32 @@ function App() {
     });
   }
 
-  function getAllReviewsByName(productName) {
-    console.log(productName);
-    if (productName) {
-      fetch(`http://localhost:4000/reviews/` + productName)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch reviews');
-          }
-          return response.json();
-        })
+  function getAllBeerReviews(id) {
+    console.log(id);
+    if (id >= 1) {
+      fetch("http://localhost:4000/beer/review/" + id)
+        .then((response) => response.json())
         .then((data) => {
-          console.log("Show reviews for product:", productName);
+          console.log("Show one product :", id);
           console.log(data);
-          setReviews(data);
+          setBeerReview(data);
         })
-        .catch((error) => {
-          console.error('Error fetching reviews:', error);
-        });
+        .catch((err) => {
+          console.log("Wrong number of Product id.");
+        })
     } else {
-      console.log("Invalid product name.");
+      console.log("Wrong number of Product id.");
+    }
+  }
+
+  function handleBeerReviewChange(evt) {
+    const value = evt.target.value;
+    if (evt.target.name === "username") {
+      setAddNewReview({ ...addNewReview, username: value });
+    } else if (evt.target.name === "comment") {
+      setAddNewReview({ ...addNewReview, comment: value });
+    } else if (evt.target.name === "rating") {
+      setAddNewReview({ ...addNewReview, rating: value });
     }
   }
 
@@ -225,6 +227,26 @@ function App() {
     } else if (evt.target.name === "Alc") {
       setAddNewBeer({ ...addNewBeer, Alc: value });
     }
+  }
+
+  function handleOnSubmitBeerReview(id) {
+    // e.preventDefault();
+    // console.log(e.target.value);
+    fetch("http://localhost:4000/beer/review/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(addNewReview),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Post a new beer completed");
+        console.log(data);
+        if (data) {
+          const value = Object.values(data);
+          alert(value);
+          window.location.reload();
+        }
+      });
   }
 
   function handleOnSubmitBeer(e) {
@@ -382,8 +404,8 @@ function App() {
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           backgroundBlendMode: 'overlay'
         }}>
-          {!isItemSelected && !isSearchView && !isUpdateView && <h1 className='text-center text-danger'>Beer</h1>}
-          {!isItemSelected && !isSearchView && !isUpdateView && (
+          {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && <h1 className='text-center text-danger'>Beer</h1>}
+          {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && (
           <div>
             <div className="search-container text-center d-flex justify-content-center align-items-center">
               <form action="/action_page.php">
@@ -494,10 +516,37 @@ function App() {
                 <button type="submit" onClick={() => updateOneBeer(selectedProduct.beerID, updateBeerMacro.Cal, updateBeerMacro.Carb, updateBeerMacro.Alc)} className="btn btn-danger col-auto">Update</button>
               </div>
             </form>
-            {/* <input style={{maxWidth: `50%`}} type="number" placeholder="New Price" name="updated_Cal" value={addNewBeerCal} onChange={handleUpdateBeerChange} />
-            <button className='btn btn-danger m-2' onClick={() => updateOneBeer(selectedProduct.beerID, addNewBeerCal)}>Update Price</button> */}
             <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
           </div>
+          )}
+          {isAddReviewView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a Review</h1>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleBeerReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleBeerReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleBeerReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={() => handleOnSubmitBeerReview(selectedProduct.beerID)} className="btn btn-danger col-auto">Finish</button>
+                </div>
+              </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+            </div>
           )}
           {isItemSelected && (
             <div>
@@ -516,17 +565,23 @@ function App() {
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
                 </div>
               </div>
+              <hr></hr>
               <div className="reviews">
-                <h3>Reviews</h3>
-                <ul>
-                  {reviews.map((review, index) => (
-                    <li key={index}>
-                      <p>Username: {review.username}</p>
-                      <p>Comment: {review.comment}</p>
-                      <p>Rating: {review.rating}</p>
-                    </li>
+                <h3>Review</h3>
+                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <div className='row row-cols-auto'>
+                  {beerReview.map((el) => (
+                    <div key={el.beerID} className='col-3 px-2'>
+                      <div className='card border border-dark' style={{ width: `25rem` }}>
+                        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                          <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
+                          <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           )}

@@ -29,6 +29,15 @@ function App() {
     rating: 0.0,
   });
 
+  const [addNewProduct, setAddNewProduct] = useState({
+    beerID: "",
+    title: "",
+    url: "",
+    description: "",
+    macro_img: "",
+    review: { username: "", comment: "", rating: "" },
+  });
+
   const [addNewRating, setAddNewRating] = useState(0);
 
   const [filter, setFilter] = useState('');
@@ -95,6 +104,12 @@ function App() {
   useEffect(() => {
     getAllJuiceProducts();
   }, []);
+
+  const [isSearchView, setIsSearchView] = useState(true);
+
+  const handleButtonClick = () => {
+    setIsSearchView(false);
+  };
 
   function getAllBeerProducts() {
     fetch("http://localhost:4000/beer")
@@ -180,14 +195,14 @@ function App() {
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
-    fetch("http://localhost:4000/insert", {
+    fetch("http://localhost:4000/beer/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addNewRating),
+      body: JSON.stringify(addNewProduct),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Post a new rating completed");
+        console.log("Post a new beer completed");
         console.log(data);
         if (data) {
           const value = Object.values(data);
@@ -333,46 +348,8 @@ function App() {
   const handleGoBack = () => {
     setSelectedProduct(null);
     setIsItemSelected(false);
+    setIsSearchView(false);
   };
-
-  const showAllSoda = filteredSoda.map((el) => (
-    <div key={el.beerID} className='col-3 px-2'>
-      <div className='card border border-dark' style={{ width: `25rem` }}>
-        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
-        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-        </div>
-      </div>
-    </div>
-  ));
-
-  const showAllJuice = filteredJuice.map((el) => (
-    <div key={el.beerID} className='col-3 px-2'>
-      <div className='card border border-dark' style={{ width: `25rem` }}>
-        <img src={el.url} width={20} alt={el.title} className='card-img-top' />
-        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-        </div>
-      </div>
-    </div>
-  ));
-
-  const showOneItem = oneProduct.map((el) => (
-    <div key={el._id} style={{marginLeft: '42%', marginTop: '1%'}}>
-      <div className='card border border-dark' style={{ width: `25rem` }}>
-        <img src={el.image} width={20} alt={el.title} className='card-img-top' />
-        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-          <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-          <p className='card-text'><span className='fw-bold'>Category:</span> {el.category}</p>
-          <p className='card-text'><span className='fw-bold'>Price:</span> {el.price}</p>
-          <p className='card-text'><span className='fw-bold'>Rate:</span> {el.rating.rate} <span className='fw-bold'>Count:</span> {el.rating.count}</p>
-          <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-        </div>
-      </div>
-    </div>
-  ));
 
   return (
     <div style={{ minHeight: `100vh` }}>
@@ -469,8 +446,8 @@ function App() {
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           backgroundBlendMode: 'overlay'
         }}>
-          {!isItemSelected && <h1 className='text-center text-danger'>Beer</h1>}
-          {!isItemSelected && (
+          {!isItemSelected && !isSearchView && <h1 className='text-center text-danger'>Beer</h1>}
+          {!isItemSelected && !isSearchView && (
           <div>
             <div className="search-container text-center">
               <form action="/action_page.php">
@@ -480,6 +457,7 @@ function App() {
                   name="search"
                   onChange={(e) => setFilter(e.target.value)}
                 />
+                <button onClick={handleButtonClick}>Switch View</button>
               </form>
             </div>
             <hr />
@@ -502,7 +480,66 @@ function App() {
             </div>
           </div>
           )}
-        {isItemSelected && (
+          {isSearchView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Product</h1>
+              <button onClick={() => handleGoBack()}>Go Back</button>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Product ID</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" placeholder="ID" name="_id" value={addNewProduct._id} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="title" value={addNewProduct.title} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Price</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="price" value={addNewProduct.price} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Category</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="category" value={addNewProduct.category} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Description</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="description" value={addNewProduct.description} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Image URL</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="image" value={addNewProduct.image} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Rating</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Count</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="count" value={addNewProduct.rating.count} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={handleOnSubmit} className="btn btn-danger col-auto">Submit</button>
+                </div>
+              </form>
+            </div>
+          )}
+          {isItemSelected && (
             <div>
               <div className='selected-product'>
                 <div className='selected-product-img'>

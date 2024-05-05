@@ -3,24 +3,26 @@ import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [product, setProduct] = useState([]);
   const [water, setWater] = useState([]);
   const [beer, setBeer] = useState([]);
   const [soda, setSoda] = useState([]);
   const [juice, setJuice] = useState([]);
-
   const [viewer1, setViewer1] = useState(false);
-
-  const [oneProduct, setOneProduct] = useState([]);
-  const [viewer2, setViewer2] = useState(false);
-
   const [checked4, setChecked4] = useState(false);
-  const [index, setIndex] = useState(0);
-
   const [checked5, setChecked5] = useState(false);
-  const [index2, setIndex2] = useState(0);
-
   const [menu, setMenu] = useState(2);
+  const [filter, setFilter] = useState('');
+  const [filteredBeer, setFilteredBeer] = useState([]);
+  const [filteredWater, setFilteredWater] = useState([]);
+  const [filteredSoda, setFilteredSoda] = useState([]);
+  const [filteredJuice, setFilteredJuice] = useState([]);
+  const [beerReview, setBeerReview] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isItemSelected, setIsItemSelected] = useState(false);
+  const [isSearchView, setIsSearchView] = useState(false);
+  const [isUpdateView, setIsUpdateView] = useState(false);
+  const [isAddReviewView, setIsAddReviewView] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   const [addNewReview, setAddNewReview] = useState({
     username: "",
@@ -43,21 +45,6 @@ function App() {
     Carb: "",
     Alc: "",
   })
-
-  const [addNewRating, setAddNewRating] = useState(0);
-
-  const [filter, setFilter] = useState('');
-  const [filteredBeer, setFilteredBeer] = useState([]);
-  const [filteredWater, setFilteredWater] = useState([]);
-  const [filteredSoda, setFilteredSoda] = useState([]);
-  const [filteredJuice, setFilteredJuice] = useState([]);
-
-  const [beerReview, setBeerReview] = useState([]);
-
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isItemSelected, setIsItemSelected] = useState(false);
-
-  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const filtered = beer.filter(item =>
@@ -113,10 +100,6 @@ function App() {
     }
   }, [selectedProduct]);
 
-  const [isSearchView, setIsSearchView] = useState(false);
-  const [isUpdateView, setIsUpdateView] = useState(false);
-  const [isAddReviewView, setIsAddReviewView] = useState(false);
-
   const handleButtonClick = () => {
     setIsSearchView(false);
   };
@@ -149,36 +132,6 @@ function App() {
       setBeer(data);
     });
     setViewer1(!viewer1);
-  }
-
-  function getAllWaterProducts() {
-    fetch("http://localhost:4000/water")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Show Catalog of Products :");
-      console.log(data);
-      setWater(data);
-    });
-  }
-
-  function getAllSodaProducts() {
-    fetch("http://localhost:4000/soda")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Show Catalog of Products :");
-      console.log(data);
-      setSoda(data);
-    });
-  }
-
-  function getAllJuiceProducts() {
-    fetch("http://localhost:4000/juice")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Show Catalog of Products :");
-      console.log(data);
-      setJuice(data);
-    });
   }
 
   function getAllBeerReviews(id) {
@@ -230,8 +183,6 @@ function App() {
   }
 
   function handleOnSubmitBeerReview(id) {
-    // e.preventDefault();
-    // console.log(e.target.value);
     fetch("http://localhost:4000/beer/review/" + id, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -309,6 +260,36 @@ function App() {
     window.location.reload();
   }
 
+  function getAllWaterProducts() {
+    fetch("http://localhost:4000/water")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setWater(data);
+    });
+  }
+
+  function getAllSodaProducts() {
+    fetch("http://localhost:4000/soda")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setSoda(data);
+    });
+  }
+
+  function getAllJuiceProducts() {
+    fetch("http://localhost:4000/juice")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Show Catalog of Products :");
+      console.log(data);
+      setJuice(data);
+    });
+  }
+
   return (
     <div style={{ minHeight: `100vh` }}>
       <div style={{ textAlign: 'center' }}>
@@ -318,7 +299,7 @@ function App() {
             <div className="collapse navbar-collapse justify-content-center">
               <div className="btn-group-lg" role="group">
                 <button className="btn btn-danger" aria-current="page" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => { setMenu(1); handleGoBack(); }}>Main</button>
-                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => { setMenu(2); handleGoBack(); }}>Beer</button>
+                <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(2); handleGoBack(); }}>Beer</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(3); handleGoBack(); }}>Water</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(4); handleGoBack(); }}>Soda</button>
                 <button className="btn btn-danger" style={{ marginLeft: `15px`, marginRight: `15px` }} onClick={() => {setMenu(5); handleGoBack(); }}>Juice</button>

@@ -1546,7 +1546,7 @@ function App() {
                 <div className='selected-product-details'>
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
-                  <p>Calories: {selectedProduct.cal}</p>
+                  <p>Calories: {selectedProduct.Cal}</p>
                   <p>Sugar: {selectedProduct.Sug} g</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>

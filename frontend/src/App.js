@@ -1367,8 +1367,8 @@ function App() {
                   <h2>{selectedProduct.title}</h2>
                   <p>{selectedProduct.description}</p>
                   <p>{selectedProduct.Cal}</p>
-                  <p>{selectedProduct.Carb}</p>
-                  <p>{selectedProduct.Alc}</p>
+                  <p>{selectedProduct.Sug}</p>
+                  <p>{selectedProduct.Caf}</p>
                   <button onClick={() => handleGoBack()}>Go Back</button>
                   <button onClick={() => deleteOneSoda(selectedProduct.sodaID)}>Delete</button>
                   <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
@@ -1405,65 +1405,174 @@ function App() {
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
             backgroundBlendMode: 'overlay'
           }}>
-            {!isItemSelected && <h1 className='text-center text-danger'>Juice</h1>}
-            {!isItemSelected && (
-            <div>
-              <div className="search-container text-center">
-                <form action="/action_page.php">
-                  <input
-                    type="text"
-                    placeholder="Search.."
-                    name="search"
-                    onChange={(e) => setFilter(e.target.value)}
-                  />
-                </form>
-              </div>
-              <hr />
-              <div className='row row-cols-auto'>
-                {filteredJuice.map((el) => (
-                  <div key={el.juiceID} className='col-3 px-2'>
-                    <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
-                    onClick={() => {
-                      setSelectedProduct(el);
-                      setIsItemSelected(true);
-                    }}>
-                      <img src={el.url} width={20} alt={el.title} className='card-img-top' />
-                      <div className='card-body border border-dark' style={{ background: `lightgray` }}>
-                        <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
-                        <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
-                      </div>
+            {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && <h1 className='text-center text-danger'>Juice</h1>}
+          {!isItemSelected && !isSearchView && !isUpdateView && !isAddReviewView && (
+          <div>
+            <div className="search-container text-center d-flex justify-content-center align-items-center">
+              <form action="/action_page.php">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  onChange={(e) => setFilter(e.target.value)}
+                />
+              </form>
+              <button onClick={() => {handleButtonClick(); setIsSearchView(true)}} className="btn btn-danger ml-2" style={{ borderRadius: '0.5rem', marginLeft: '4rem' }}>Add a New Juice</button>
+            </div>
+            <hr />
+            <div className='row row-cols-auto'>
+              {filteredJuice.map((el) => (
+                <div key={el.juiceID} className='col-3 px-2'>
+                  <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
+                  onClick={() => {
+                    setSelectedProduct(el);
+                    setIsItemSelected(true);
+                  }}>
+                    <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+                    <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+          </div>
+          )}
+          {isSearchView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a New Juice</h1>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Juice ID</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="juiceID" value={addNewJuice.juiceID} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="title" value={addNewJuice.title} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Image URL</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="url" value={addNewJuice.url} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Description</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="description" value={addNewJuice.description} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Calories (cal)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="Cal" value={addNewJuice.Cal} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Sugar (g)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="Sug" value={addNewJuice.Sug} onChange={handleJuiceChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={handleOnSubmitJuice} className="btn btn-danger col-auto">Submit</button>
+                </div>
+              </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+            </div>
+          )}
+          {isUpdateView && ( 
+          <div>
+            <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Update Juice Macro Information</h1>
+            <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Calory (cal)</label>
+                <div className="col-sm-10">
+                  <input type="number" className="form-control form-control-lg" name="updated_Cal" value={updateJuiceMacro.Cal} onChange={handleUpdateJuiceChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label className="col-sm-2 col-form-label col-form-label-lg">New Sugar (g)</label>
+                <div className="col-sm-10">
+                  <input type="number" className="form-control form-control-lg" name="updated_Sug" value={updateJuiceMacro.Sug} onChange={handleUpdateJuiceChange} />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <button type="submit" onClick={() => updateOneJuice(selectedProduct.juiceID, updateJuiceMacro.Cal, updateJuiceMacro.Sug)} className="btn btn-danger col-auto">Update</button>
+              </div>
+            </form>
+            <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+          </div>
+          )}
+          {isAddReviewView && (
+            <div>
+              <h1 className='text-center fs-1 fw-bold text-danger fw-underline'>Add a Review</h1>
+              <form style={{ maxWidth: `50vw`, marginLeft: `25vw` }}>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Name (Anonymous)</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="username" value={addNewReview.username} onChange={handleJuiceReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Comment</label>
+                  <div className="col-sm-10">
+                    <input type="text" className="form-control form-control-lg" name="comment" value={addNewReview.comment} onChange={handleJuiceReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label className="col-sm-2 col-form-label col-form-label-lg">Rating (max 5.0)</label>
+                  <div className="col-sm-10">
+                    <input type="number" className="form-control form-control-lg" name="rating" value={addNewReview.rating} onChange={handleJuiceReviewChange} />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <button type="submit" onClick={() => handleOnSubmitJuiceReview(selectedProduct.juiceID)} className="btn btn-danger col-auto">Finish</button>
+                </div>
+              </form>
+              <button onClick={() => handleGoBack()} className="btn btn-danger col-auto" style={{ borderRadius: '0.5rem', display:'block', margin:'auto' }}>Go Back</button>
+            </div>
+          )}
+          {isItemSelected && (
+            <div>
+              <div className='selected-product'>
+                <div className='selected-product-img'>
+                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                </div>
+                <div className='selected-product-details'>
+                  <h2>{selectedProduct.title}</h2>
+                  <p>{selectedProduct.description}</p>
+                  <p>{selectedProduct.cal}</p>
+                  <p>{selectedProduct.Sug}</p>
+                  <button onClick={() => handleGoBack()}>Go Back</button>
+                  <button onClick={() => deleteOneJuice(selectedProduct.juiceID)}>Delete</button>
+                  <button onClick={() => {setIsUpdateView(true); setIsItemSelected(false);}}>Update Macro Information</button>
+                </div>
+              </div>
+              <hr></hr>
+              <div className="reviews">
+                <h3>Review</h3>
+                <button onClick={() => {setIsAddReviewView(true); setIsItemSelected(false);}}>Write a Review</button>
+                <div className='row row-cols-auto'>
+                  {juiceReview.map((el) => (
+                    <div key={el.juiceID} className='col-3 px-2'>
+                      <div className='card border border-dark' style={{ width: `25rem` }}>
+                        <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                          <p className='card-text'><span className='fw-bold'>Name:</span> {el.username}</p>
+                          <p className='card-text'><span className='fw-bold'>Comment:</span> {el.comment}</p>
+                          <p className='card-text'><span className='fw-bold'>Rating:</span> {el.rating}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-            )}
-          {isItemSelected && (
-              <div>
-                <div className='selected-product'>
-                  <div className='selected-product-img'>
-                    <img src={selectedProduct.url} alt={selectedProduct.title} />
-                  </div>
-                  <div className='selected-product-details'>
-                    <h2>{selectedProduct.title}</h2>
-                    <p>{selectedProduct.description}</p>
-                    <button onClick={() => handleGoBack()}>Go Back</button>
-                  </div>
-                </div>
-                <div className="reviews">
-                  <h3>Reviews</h3>
-                  <ul>
-                    {reviews.map((review, index) => (
-                      <li key={index}>
-                        <p>Username: {review.username}</p>
-                        <p>Comment: {review.comment}</p>
-                        <p>Rating: {review.rating}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+          )}
         </div>}
       </div>
     </div>

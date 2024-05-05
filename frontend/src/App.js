@@ -539,19 +539,66 @@ function App() {
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           backgroundBlendMode: 'overlay'
         }}>
-          <h1 className='text-center text-danger'>Water</h1>
-          <div class="search-container" className='text-center'>
-            <form action="/action_page.php">
-              <input type="text" placeholder="Search.." name="search"
-                onChange={(e) => {
-                  setFilter(e.target.value);
-                }}></input>
-            </form>
+          {!isItemSelected && <h1 className='text-center text-danger'>Water</h1>}
+          {!isItemSelected && (
+          <div>
+            <div className="search-container text-center">
+              <form action="/action_page.php">
+                <input
+                  type="text"
+                  placeholder="Search.."
+                  name="search"
+                  onChange={(e) => setFilter(e.target.value)}
+                />
+              </form>
+            </div>
+            <hr />
+            <div className='row row-cols-auto'>
+              {filteredWater.map((el) => (
+                <div key={el.waterID} className='col-3 px-2'>
+                  <div className='card border border-dark' style={{ width: `25rem`, cursor: 'pointer' }}
+                  onClick={() => {
+                    setSelectedProduct(el);
+                    setIsItemSelected(true);
+                  }}>
+                    <img src={el.url} width={20} alt={el.title} className='card-img-top' />
+                    <div className='card-body border border-dark' style={{ background: `lightgray` }}>
+                      <p className='card-text'><span className='fw-bold'>Title:</span> {el.title}</p>
+                      <p className='card-text'><span className='fw-bold'>Description:</span> {el.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <hr></hr>
-          <div><span className='row row-cols-auto'>{showAllWater}</span></div>
-        </div>
-      }
+          )}
+        {isItemSelected && (
+            <div>
+              <div className='selected-product'>
+                <div className='selected-product-img'>
+                  <img src={selectedProduct.url} alt={selectedProduct.title} />
+                </div>
+                <div className='selected-product-details'>
+                  <h2>{selectedProduct.title}</h2>
+                  <p>{selectedProduct.description}</p>
+                  <button onClick={() => handleGoBack()}>Go Back</button>
+                </div>
+              </div>
+              <div className="reviews">
+                <h3>Reviews</h3>
+                <ul>
+                  {reviews.map((review, index) => (
+                    <li key={index}>
+                      <p>Username: {review.username}</p>
+                      <p>Comment: {review.comment}</p>
+                      <p>Rating: {review.rating}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+      </div>}
 
       {menu === 4 && 
         <div style={{

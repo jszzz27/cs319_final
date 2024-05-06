@@ -467,7 +467,7 @@ function App() {
 
   function handleSodaChange(evt) {
     const value = evt.target.value;
-    if (evt.target.name === "soadID") {
+    if (evt.target.name === "sodaID") {
       setAddNewSoda({ ...addNewSoda, sodaID: value });
     } else if (evt.target.name === "title") {
       setAddNewSoda({ ...addNewSoda, title: value });
@@ -606,7 +606,7 @@ function App() {
 
   function handleJuiceChange(evt) {
     const value = evt.target.value;
-    if (evt.target.name === "soadID") {
+    if (evt.target.name === "juiceID") {
       setAddNewJuice({ ...addNewJuice, juiceID: value });
     } else if (evt.target.name === "title") {
       setAddNewJuice({ ...addNewJuice, title: value });

@@ -779,7 +779,7 @@ function App() {
             <div className="row mt-5">
               <div className="col-md-6">
                 <h2>Top 3 Soda Brands:</h2>
-                <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages.</p>
+                <p>A refreshing companion for any occasion, adding sparkle to gatherings and moments of relaxation. Enjoy the effervescent delight of soda, a timeless beverage loved by all ages. The soda options seen to the right are fan favorites and add an extra bubbly layer of happiness to your life. We here at best beverages reccomend you check them out!</p>
               </div>
               <div className="col-md-6">
                 <img src="https://vinut.com.vn/wp-content/uploads/2023/12/website-65.png" className="img-fluid" alt="Coca-Cola" />
@@ -791,13 +791,13 @@ function App() {
               </div>
               <div className="col-md-6">
                 <h2>Top 3 Beer Brands:</h2>
-                <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip.</p>
+                <p>Fosters conviviality and shared moments, whether at the pub or a social gathering. Embrace the artistry and heritage behind each brew, ensuring a memorable and enjoyable experience with every sip. We here at best beverages don't believe in a top alcohol per say. But we do belive in very good ones! We would like you to test our taste, and check out these drinks.</p>
               </div>
             </div>
             <div className="row mt-5">
               <div className="col-md-6">
                 <h2>Top 3 Water Brands:</h2>
-                <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind.</p>
+                <p>A timeless necessity that quenches thirst and supports optimal bodily functions. Stay balanced and energized with the crisp purity of water, the ultimate refreshment for body and mind. Some may say that all water tastes the same, but we all know that this statement couldnt be further from the truth. Do us a favor and try out these water brands. We promise that you wont regret it!</p>
               </div>
               <div className="col-md-6">
                 <img src="https://i0.wp.com/sporked.com/wp-content/uploads/2023/03/BEST_BOTTLED_WATER_HEADER.jpg?fit=1920%2C1080&ssl=1" className="img-fluid" alt="Evian" />
@@ -809,7 +809,7 @@ function App() {
               </div>
               <div className="col-md-6">
                 <h2>Top 3 Juice Brands:</h2>
-                <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body.</p>
+                <p>A nourishing choice packed with vitamins and antioxidants, perfect for a healthy lifestyle. Indulge in the invigorating freshness of juice, a delicious and revitalizing way to hydrate your body. Juice is a timeless choice that shows the natural beaty in the world. These options here will always be reminders of that simple fact. If you dont belive us, then make sure to try these in the near future!</p>
               </div>
             </div>
             <hr></hr>

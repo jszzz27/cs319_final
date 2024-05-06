@@ -772,8 +772,8 @@ function App() {
           }}>
             <div className="col-md-4" style={{ textAlign: "center", marginLeft: `470px` }}>
                 <h1>Welcome to Best Beverages!</h1>
-                <p>Here at best beverages we strive to introduce our community to be best beverage options around.</p>
-                <p>In this website you will find a helthy amount of informative data within each product and a tasteful amount of community reviews.</p>
+                <p>Here at best beverages we strive to introduce our community to the best beverage options around.</p>
+                <p>In this website you will find a healthy amount of informative data within each product and a tasteful amount of community reviews.</p>
                 <p>We here at Best Beverages hope we can introduce you to a new pespective on the world of beverages around you, and we hope to provide you a chance to select the best beverage in your lifetime!</p>
             </div>
             <div className="row mt-5">

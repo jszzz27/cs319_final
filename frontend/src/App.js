@@ -770,7 +770,7 @@ function App() {
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
             backgroundBlendMode: 'overlay'
           }}>
-            <div className="col-md-4" style={{ textAlign: "center" }}>
+            <div className="col-md-4" style={{ textAlign: "center", marginLeft: `500px` }}>
                 <h1>Welcome to Best Beverages!</h1>
                 <p>Here at best beverages we strive to introduce our community to be best beverage options around.</p>
                 <p>In this website you will find a helthy amount of informative data within each product and a tasteful amount of community reviews.</p>
